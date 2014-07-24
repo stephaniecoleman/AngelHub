@@ -24,4 +24,6 @@
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
+<%= link_to "with github", developer_omniauth_authorize_path(:github) %>
+
 <%= render "devise/shared/links" %>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
   devise_for :organizations, path: ''
+  devise_for :developers, path: '', controllers: { omniauth_callbacks: 'github_callbacks' }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
