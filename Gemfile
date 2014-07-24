@@ -34,6 +34,7 @@ group :test, :development do
 	gem 'pry'
 	gem 'capybara'
   gem 'spring'
+  gem 'binding_of_caller'
 end
 
 # Use ActiveModel has_secure_password
