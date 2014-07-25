@@ -15,6 +15,15 @@ Bundler.require(*Rails.groups)
 
 module AngelHub
   class Application < Rails::Application
+    config.middleware.use Rack::LiveReload
+    config.assets.paths << "#{Rails.root}/vendor/assets/*"
+    config.assets.paths << "#{Rails.root}/vendor/assets/fonts"
+    config.assets.paths << "#{Rails.root}/vendor/assets/stylesheets"
+    config.assets.precompile << Proc.new do |path|
+      if path =~ /\.(otf|eot|svg|ttf|woff)\z/
+        true
+      end
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

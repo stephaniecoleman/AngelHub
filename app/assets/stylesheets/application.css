@@ -11,5 +11,21 @@
  * file per style scope.
  *
  *= require_tree .
+ *= animate
+ *= bootstrap-theme
+ *= bootstrap
+ *= color
+ *= costumizefont
+ *= font-awesome
+ *= light-blue
+ *= light-green
+ *= light-red
+ *= og-component
+ *= style-dark
+ *= style-light
+ *= style
+ *= venobox
+ *= yellow
+ *= zocial
  *= require_self
  */

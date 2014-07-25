@@ -13,4 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= bootstrap
+//= grid
+//= html5shiv
+//= jquery.backgroundvideo
+//= jquery.backtotop
+//= jquery.countdown
+//= jquery.countTo
+//= jquery.fitvid
+//= jquery.parallax
+//= main
+//= modernizr.custom
+//= waypoints
 //= require_tree .
