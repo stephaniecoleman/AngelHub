@@ -15,7 +15,6 @@ Bundler.require(*Rails.groups)
 
 module AngelHub
   class Application < Rails::Application
-    config.middleware.use Rack::LiveReload
     config.assets.paths << "#{Rails.root}/vendor/assets/*"
     config.assets.paths << "#{Rails.root}/vendor/assets/fonts"
     config.assets.paths << "#{Rails.root}/vendor/assets/stylesheets"

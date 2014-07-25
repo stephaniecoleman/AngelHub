@@ -10,18 +10,19 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require animate
- *= require bootstrap-theme
- *= require bootstrap
- *= require color
- *= require costumizefont
- *= require font-awesome
- *= require og-component
- *= require style-light
- *= require style
 
- *= require yellow
- *= require zocial
- *= require_self
+ *= animate
+ *= bootstrap-theme
+ *= bootstrap
+ *= color
+ *= costumizefont
+ *= font-awesome
+ *= og-component
+ *= style-light
+ *= style
+ *= venobox
+ *= yellow
+ *= zocial
+
  */
+
