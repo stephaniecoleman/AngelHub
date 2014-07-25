@@ -29,7 +29,7 @@ class Developer < ActiveRecord::Base
     attrs.reject! do |_, val|
       if val.is_a? Array
           val.reject!(&:blank?).none?
-      else 
+      else
         val.blank?
       end
     end
