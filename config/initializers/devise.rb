@@ -230,8 +230,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
 
-  # Figaro.env#key_name throws an error when banged if key is not found
-  config.omniauth :github, Figaro.env.github_key!, Figaro.env.github_secret!, scope: 'user'
+  
+  config.omniauth :github, ENV.fetch('GITHUB_KEY'), ENV.fetch('GITHUB_SECRET'), scope: 'user'
 
   # log omniauth activity
   OmniAuth.config.logger = Rails.logger

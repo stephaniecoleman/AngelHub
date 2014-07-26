@@ -1,3 +1,3 @@
 Airbrake.configure do |config|
-  config.api_key = Figaro.env.airbrake_key!
+  config.api_key = ENV.fetch 'AIRBRAKE_KEY'
 end
