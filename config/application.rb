@@ -15,9 +15,9 @@ Bundler.require(*Rails.groups)
 
 module AngelHub
   class Application < Rails::Application
-    config.assets.paths << "#{Rails.root}/vendor/assets/*"
-    config.assets.paths << "#{Rails.root}/vendor/assets/fonts"
-    config.assets.paths << "#{Rails.root}/vendor/assets/stylesheets"
+    
+    # Precompile vendor assets
+    config.assets.paths << Rails.root.join('vendor', 'assets', '**', '*')
     config.assets.precompile << Proc.new do |path|
       if path =~ /\.(otf|eot|svg|ttf|woff)\z/
         true

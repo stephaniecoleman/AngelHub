@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
+
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -23,20 +25,32 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'devise'
+
+# ______________ explain please
 gem "airbrake"
 
+# organize application secrets and api keys. Read more: https://github.com/laserlemon/figaro
+gem 'figaro'
+
 group :test, :development do
-	gem 'rspec'
-	gem 'rspec-rails', '3.0.1'
-	gem 'better_errors'
-	gem 'pry'
-	gem 'capybara'
-  gem 'spring'
+  gem 'rspec'
+  gem 'rspec-rails', '3.0.1'
+  gem 'better_errors'
+  gem 'pry'
+  gem 'capybara'
+
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # gem 'spring'
+  
   gem 'binding_of_caller'
 end
 
+# use omniauth protocol to sign in developers
+# Read: 
+#  https://github.com/intridea/omniauth
+#  https://github.com/intridea/omniauth-github
+#  https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 gem 'omniauth'
 gem 'omniauth-github'
 
