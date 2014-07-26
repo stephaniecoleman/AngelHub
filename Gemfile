@@ -25,12 +25,11 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+# user authentication
 gem 'devise'
 
-# ______________ explain please
-gem "airbrake"
-
-# organize application secrets and api keys. Read more: https://github.com/laserlemon/figaro
+# organize application secrets and api keys. 
+# Read more: https://github.com/laserlemon/figaro
 gem 'figaro'
 
 # role based authorization gem for devs and organizations

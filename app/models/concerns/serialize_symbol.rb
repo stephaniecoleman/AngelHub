@@ -1,6 +1,6 @@
 module SerializeSymbol
 
-  refine( Symbol ) do
+  refine Symbol do
     def self.dump(symbol)
       symbol.to_s
     end
