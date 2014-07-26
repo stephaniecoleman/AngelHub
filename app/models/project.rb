@@ -1,4 +1,8 @@
 class Project < ActiveRecord::Base
+  belongs_to :organization
+  has_many :developer_project
+  has_many :developers, :through => :developer_project
+
   using SerializeSymbol
 
   before_save :initialize_status

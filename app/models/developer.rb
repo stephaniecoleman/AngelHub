@@ -1,9 +1,14 @@
 class Developer < ActiveRecord::Base
+  has_many :developer_projects
+  has_many :projects, :through => :developer_projects
+  has_many :organizations, :through => :projects
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :validatable
   devise :registerable, :recoverable, :rememberable,
          :trackable, :validatable, :omniauthable,
          :omniauth_providers => [:github]
+
 
   def self.from_omniauth(auth)
     where(auth.slice(:uid, :provider)).first_or_create do |developer|

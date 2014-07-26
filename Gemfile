@@ -33,6 +33,11 @@ gem "airbrake"
 # organize application secrets and api keys. Read more: https://github.com/laserlemon/figaro
 gem 'figaro'
 
+# role based authorization gem for devs and organizations
+# Read: https://github.com/CanCanCommunity/cancancan
+#       https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+gem 'cancancan', '~> 1.9'
+
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails', '3.0.1'
