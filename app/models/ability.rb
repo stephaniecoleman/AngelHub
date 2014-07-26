@@ -2,13 +2,18 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    # CanCan uses the current_user method and here we define what the user
+    # is allowed to do
+    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
     case user
     when Developer
         # can :join, Project
     when Organization
-        can :manage, Project
+        # organizations can edit, update, delete projects if they are the owners
+        can [:edit, :update, :destroy], Project, :organization_id => user.id
     end
 
+    # all users(devs and organizations) can see projects
     can :read, Project
 
     # Define abilities for the passed in user here. For example:
