@@ -8,6 +8,5 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: exception.message
   end
 
-  private
-    include ApplicationHelper
+  include CurrentUserHelper
 end
