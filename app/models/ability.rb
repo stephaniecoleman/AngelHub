@@ -10,6 +10,7 @@ class Ability
         # can :join, Project
     when Organization
         # organizations can edit, update, delete projects if they are the owners
+        can :create, Project
         can [:edit, :update, :destroy], Project, :organization_id => user.id
     end
 
