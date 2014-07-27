@@ -32,7 +32,7 @@ gem 'devise'
 # Read more: https://github.com/laserlemon/figaro
 gem 'figaro'
 
-# role based authorization gem for devs and organizations
+# role based authorization gem
 # Read: https://github.com/CanCanCommunity/cancancan
 #       https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 gem 'cancancan', '~> 1.9'

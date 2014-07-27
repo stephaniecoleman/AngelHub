@@ -7,9 +7,8 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'devise/sessions#destroy', as: 'destroy_developer_session'
   end
 
-  resources :developers, only: :index
+  resources :developers
   resources :projects
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
