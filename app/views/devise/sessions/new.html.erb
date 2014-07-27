@@ -1,17 +1,32 @@
-<h2>Sign in</h2>
+<div class="row">
+  <div class="col-xs-5">
+    <div class="page-header">
+      <h2>Sign In</h2>
+    </div>
+    <div class="well col-xs-10">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {role: "form"}) do |f| %>
+      <div class="input-group col-xs-10">
+        <%= f.label :email, class: "control-label" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div><br>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+      <div class="input-group col-xs-10">
+        <%= f.label :password, class: "control-label" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+      <% if devise_mapping.rememberable? -%>
+        <div class="checkbox col-xs-10">
+          <%= f.check_box :remember_me %> <%= f.label :remember_me, class: "control-label" %>
+        </div><br><br>
+      <% end -%>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+      <div class="input-group col-xs-10">
+        <%= f.submit "Sign In", class: "btn btn-default form-control" %>
+      </div><br>
 
-  <div><%= f.submit "Sign in" %></div>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
 <% end %>
-
-<%= render "devise/shared/links" %>
