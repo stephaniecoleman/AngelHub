@@ -48,8 +48,11 @@ RSpec.describe Organization, :type => :model do
     end
 
     it "has developers through projects" do
+      expect{ create(:organization_with_projects, developers: true) }.not_to raise_error
 
+      organization = create(:organization_with_projects, developers: true)
+      expect(organization.developers.count).not_to be_zero
     end
-    
+
   end
 end

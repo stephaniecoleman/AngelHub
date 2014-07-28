@@ -3,6 +3,10 @@
 FactoryGirl.define do
 
   factory :organization do
+    # {} or blocks tell these attributes to be lazily loaded
+    # meaning the content of the block are executed 
+    # every time these attributes are requested
+    # ultimately, defining these attributes differently for each instance
     name { Faker::Company.name }
     email { Faker::Internet.free_email }
     password Faker::Internet.password(8, 12)
@@ -13,15 +17,19 @@ FactoryGirl.define do
 
       ignore do
         count 5
-        # generate a random number of developers for each project
-        and_developers false
+        # generate developers for each project
+        developers false
       end
 
       after(:create) do |organization, evaluator|
-        list = create_list(:project, evaluator.count, organization: organization)
-        if evaluator.and_developers
-          list.each do |project|
-            
+        count = evaluator.count
+        list = create_list(:project, count, organization: organization)
+
+        # if asked for developers, assign a random list of projects to a developer
+        if evaluator.developers
+          count.times do
+            random_projects = list.sample(rand(1..count))
+            create(:developer_with_projects, :associated_projects => random_projects)
           end
         end
       end
