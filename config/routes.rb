@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
   root 'home#index'
-  devise_for :organizations, path: '', controllers: {
-    # app/controllers/organization/registrations_controller.rb holds custom registration behavior for
-    # the organization devise model
-    registrations: 'organizations/registrations'
-  }
+  devise_for :organizations, path: '', :skip => [:registrations, :sessions]
+
+  devise_scope :organizations do
+    get 'organizations/:id/edit' => 'organizations/registrations#edit'
+    post 'organizations' => 'organizations/registrations#create'
+    put 'organizations/:id' => 'organizations/registrations#update'
+    patch 'organizations/:id' => 'organizations/registrations#update'
+
+    post 'sign_in' => 'devise/sessions#create', :as => 'create_organization_session'
+    delete 'sign_out' => 'devise/sessions#destroy', :as => 'destroy_organization_session'
+  end
+
   devise_for :developers, path: '', controllers: { 
     omniauth_callbacks: 'github_callbacks',
   }
