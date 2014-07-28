@@ -8,8 +8,6 @@ class HomeController < ApplicationController
       #   organizations/dashboard.html.erb for organizations
       @projects = current_user.projects
       render "#{user_type}/dashboard"
-    else
-      redirect_to action: 'new', controller: 'devise/registrations'
     end
   end
 
