@@ -11,8 +11,12 @@ FactoryGirl.define do
 
     factory :organization_with_projects do
 
+      ignore do
+        count 5
+      end
+
       after(:create) do |organization, evaluator|
-        
+        create_list(:project, evaluator.count, organization: organization)
       end
     end
   end

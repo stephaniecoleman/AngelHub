@@ -49,10 +49,7 @@ group :test, :development do
   # gem 'spring'
   
   gem 'binding_of_caller'
-end
-
-group :test do
-  # A library for setting up Ruby/ActiveRecord objects as test data
+   # A library for setting up Ruby/ActiveRecord objects as test data
   # Read: 
   #   https://github.com/thoughtbot/factory_girl
   #   http://rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
