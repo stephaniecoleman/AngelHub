@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  devise_for :organizations, path: '', :skip => [:registrations, :sessions] do 
-
-  end
+  devise_for :organizations, path: '', :skip => [:registrations, :sessions]
 
   devise_scope :organizations do
     get 'organizations/:id/edit' => 'organizations/registrations#edit'
