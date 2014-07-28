@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     post 'organizations' => 'organizations/registrations#create'
     put 'organizations/:id' => 'organizations/registrations#update'
     patch 'organizations/:id' => 'organizations/registrations#update'
+
+    post '/sign_in' => 'devise/sessions#create'
+    delete '/sign_out' => 'devise/sessions#destroy'
   end
 
   devise_for :developers, path: '', controllers: { 
