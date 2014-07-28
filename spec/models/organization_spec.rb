@@ -24,6 +24,11 @@ RSpec.describe Organization, :type => :model do
   describe 'relationships' do
     
     it "has many projects" do
+      begin
+        create(:organization_with_projects)
+      rescue => e
+        binding.pry
+      end
       # expect{ create(:organization_with_projects) }.to raise_error
     end
   end
