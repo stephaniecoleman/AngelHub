@@ -8,4 +8,10 @@ module ApplicationHelper
 		end
 	end
 
+  def modal_links
+    if !signed_in?
+      render 'shared/signin_modal'
+    end
+  end
+
 end
