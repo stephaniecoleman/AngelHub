@@ -1,7 +1,28 @@
-<%= form_for(project) do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :description %>
-  <%= f.text_field :repository %>
+<%= form_for(project, :html => {:class => "form-horizontal"}) do |f| %>
 
-  <%= f.submit %>
+<div class="control-group">
+	<%= f.label :desired_project, :class => 'control-label' %>
+	<div class="controls">
+  <%= f.text_field :title, :class => "text_field", placeholder: "Project name here" %>
+  </div>
+ </div>
+
+ <div class="control-group">
+	<%= f.label :description, :class => 'control-label' %>
+	<div class="controls">
+  <%= f.text_area :description, :class => "text_field", placeholder: 'What do you envision for this project?' %>
+  </div>
+ </div>
+
+ <div class="control-group">
+	<%= f.label :repository, :class => 'control-label' %>
+	<div class="controls">
+  <%= f.text_field :repository, :class => "text_field", placeholder: 'GitHub url' %>
+  </div>
+ </div>
+<br>
+<div class="form-actions">
+  <%= f.submit :class => 'btn btn-info' %>
+</div>
+
 <% end %>
