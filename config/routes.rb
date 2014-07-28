@@ -2,21 +2,23 @@ Rails.application.routes.draw do
   root 'home#index'
   devise_for :organizations, path: '', :skip => [:registrations, :sessions]
 
-  devise_scope :organizations do
+  devise_scope :organization do
     get 'organizations/:id/edit' => 'organizations/registrations#edit'
-    post 'organizations' => 'organizations/registrations#create'
+    post 'organizations' => 'organizations/registrations#create', as: 'organization_registration'
     put 'organizations/:id' => 'organizations/registrations#update'
     patch 'organizations/:id' => 'organizations/registrations#update'
 
-    post 'sign_in' => 'devise/sessions#create', :as => 'create_organization_session'
+    post 'sign_in' => 'devise/sessions#create', :as => 'organization_session'
     delete 'sign_out' => 'devise/sessions#destroy', :as => 'destroy_organization_session'
   end
 
-  devise_for :developers, path: '', controllers: { 
+
+
+  devise_for :developer, path: '', controllers: { 
     omniauth_callbacks: 'github_callbacks',
   }
 
-  devise_scope :developers do
+  devise_scope :developer do
     delete 'sign_out', to: 'devise/sessions#destroy', as: 'destroy_developer_session'
   end
 
