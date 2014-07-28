@@ -36,6 +36,8 @@ module AngelHub
     # config.i18n.default_locale = :de
 
     config.generators do |g|
+        # rails g factory_girl:model <name>
+        # creates a factory at spec/factories/
         g.factory_girl dir: Rails.root.join('spec', 'factories')
     end
   end

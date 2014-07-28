@@ -12,7 +12,6 @@ RSpec.describe Organization, :type => :model do
     context 'without a url' do
       subject { build(:organization, :url => nil) }
       it { should be_invalid }
-
     end
 
     context 'without a description' do
@@ -24,5 +23,8 @@ RSpec.describe Organization, :type => :model do
 
   describe 'relationships' do
     
+    it "has many projects" do
+      # expect{ create(:organization_with_projects) }.to raise_error
+    end
   end
 end
