@@ -19,17 +19,37 @@ RSpec.describe Organization, :type => :model do
       it { should be_invalid }
     end
 
+    context 'ununique name' do
+      before do
+        @common_name = Faker::Company.name
+        create(:organization, :name => @common_name)
+      end
+
+      subject { build(:organization, :name => @common_name) }
+
+      it { should be_invalid }
+    end
+
   end
 
   describe 'relationships' do
+
+    it 'has no projects by default' do
+      organization = create(:organization)
+
+      expect(organization.projects.count).to be(0)
+    end
     
     it "has many projects" do
-      begin
-        create(:organization_with_projects)
-      rescue => e
-        binding.pry
-      end
-      # expect{ create(:organization_with_projects) }.to raise_error
+      expect{ create(:organization_with_projects) }.not_to raise_error
+
+      organization = create(:organization_with_projects, count: 5)
+      expect(organization.projects.count).to be(5)
     end
+
+    it "has developers through projects" do
+
+    end
+    
   end
 end
