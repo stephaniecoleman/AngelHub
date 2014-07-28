@@ -6,7 +6,7 @@ FactoryGirl.define do
     name Faker::Company.name
     email Faker::Internet.free_email
     password Faker::Internet.password(8, 12)
-    url { Faker::Internet.url(name) }
+    url { Faker::Internet.url("#{name}.com") }
     description Faker::Company.catch_phrase
 
     factory :organization_with_projects do
