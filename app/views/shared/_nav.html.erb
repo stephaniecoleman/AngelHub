@@ -63,7 +63,12 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 <ul class="nav navbar-nav navbar-right">
-<li class="active"><a class="sscroll" href="#">Sign In</a>
+</button>
+<!-- <li><a class="sscroll" data-toggle="modal" data-target="#" href="#">Sign In</a>
+</li> -->
+<li><%= link_to "Sign In", data: {:remote => "true", :toggle => "modal", :target => "#"} do %>
+      <%= render 'devise/sessions/new' %>
+      <% end %>
 </li>
 <li><a class="sscroll" href="#">Sign Up</a>
 </li>
