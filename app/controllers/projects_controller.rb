@@ -11,6 +11,10 @@ class ProjectsController < ApplicationController
 
   end
 
+  def index
+    
+  end
+
   private
 
     def project_params
