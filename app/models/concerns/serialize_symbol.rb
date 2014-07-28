@@ -14,6 +14,7 @@ module SerializeSymbol
     def self.load(string)
       string.to_sym
     end
+
   end
   
 end

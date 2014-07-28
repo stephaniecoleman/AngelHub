@@ -6,6 +6,7 @@ class HomeController < ApplicationController
       # should be located in 
       #   developers/dashboard.html.erb for developers
       #   organizations/dashboard.html.erb for organizations
+      @projects = current_user.projects
       render "#{user_type}/dashboard"
     else
       redirect_to action: 'new', controller: 'devise/registrations'
