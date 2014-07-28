@@ -22,7 +22,7 @@ class Developer < ActiveRecord::Base
       name: auth.info.name,
       image: auth.info.image,
       email: auth.info.email,
-      github_url: auth.info.urls.github,
+      github_url: auth.extra.raw_info.html_url,
       blog_url: [auth.info.urls.blog, auth.extra.raw_info.blog],
       company: auth.extra.raw_info.company,
       location: auth.extra.raw_info.location,
