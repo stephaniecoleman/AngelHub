@@ -19,9 +19,11 @@
  *= require font-awesome
  *= require og-component
  *= require style-light
- *= require style
-
- *= require yellow
+ *= require light-blue
  *= require zocial
  *= require_self
  */
+
+div.container {
+  position: relative;
+}

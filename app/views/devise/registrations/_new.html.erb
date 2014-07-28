@@ -1,0 +1,28 @@
+<div class="well" role="form">
+<%= form_for(:organization, url: registration_path(:organization)) do |f| %>
+<div class="form-group">
+  <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+</div>
+
+<div class="form-group">
+  <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+</div>
+
+<div class="form-group">
+  <%= f.text_field :url, class: "form-control", placeholder: "Website" %>
+</div>
+
+<div class="form-group">
+  <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
+</div>
+
+<div class="form-group">
+    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %></div>
+
+<div class="form-group">
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation" %></div>
+
+<div class="form-group">
+  <%= f.submit "Sign Up", class: "btn btn-default form-control"  %></div>
+<% end %>
+</div>
