@@ -61,14 +61,11 @@
 </div>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<div class="collapse navbar-collapse">
 <ul class="nav navbar-nav navbar-right">
-</button>
 <!-- <li><a class="sscroll" data-toggle="modal" data-target="#" href="#">Sign In</a>
 </li> -->
-<li><%= link_to "Sign In", data: {:remote => "true", :toggle => "modal", :target => "#"} do %>
-      <%= render 'devise/sessions/new' %>
-      <% end %>
+<li><a data-toggle="modal" href="#myModal">Sign In</a>
 </li>
 <li><a class="sscroll" href="#">Sign Up</a>
 </li>
@@ -97,3 +94,4 @@
 </div>
 <!-- /.container-fluid -->
 </nav>
+<%= render 'shared/signin_modal' %>
