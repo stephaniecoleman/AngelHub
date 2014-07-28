@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
   root 'home#index'
-  devise_for :organizations, path: ''
-  devise_for :developers, path: '', controllers: { omniauth_callbacks: 'github_callbacks' }
+  devise_for :organizations, path: '', controllers: {
+    # app/controllers/organization/registrations_controller.rb holds custom registration behavior for
+    # the organization devise model
+    registrations: 'organizations/registrations'
+  }
+  devise_for :developers, path: '', controllers: { 
+    omniauth_callbacks: 'github_callbacks',
+  }
 
   devise_scope :developers do
     delete 'sign_out', to: 'devise/sessions#destroy', as: 'destroy_developer_session'
   end
 
-  resources :developers, only: :index
+  resources :developers
   resources :projects
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

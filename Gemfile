@@ -32,9 +32,10 @@ gem 'devise'
 # Read more: https://github.com/laserlemon/figaro
 gem 'figaro'
 
-# role based authorization gem for devs and organizations
-# Read: https://github.com/CanCanCommunity/cancancan
-#       https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+# role based authorization gem
+# Read: 
+#  https://github.com/CanCanCommunity/cancancan
+#  https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 gem 'cancancan', '~> 1.9'
 
 group :test, :development do
@@ -48,6 +49,15 @@ group :test, :development do
   # gem 'spring'
   
   gem 'binding_of_caller'
+   # A library for setting up Ruby/ActiveRecord objects as test data
+  # Read: 
+  #   https://github.com/thoughtbot/factory_girl
+  #   http://rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
+  gem 'factory_girl_rails'
+
+  # a library that generates random data
+  # https://github.com/stympy/faker
+  gem 'faker'
 end
 
 # use omniauth protocol to sign in developers
