@@ -4,20 +4,20 @@ FactoryGirl.define do
   
   factory :developer do
     name Faker::Internet.user_name
-    email Faker::Internet.free_email
+    email { Faker::Internet.free_email }
     password Faker::Internet.password(8, 12)
     github_url { Faker::Internet.url(name) }
-  end
 
-  factory :developer_with_projects do
+    factory :developer_with_projects do
 
-    ignore do
-      count 5
+      ignore do
+        associated_projects []
+      end
+
+      after(:create) do |developer, evaluator|
+        developer.projects << evaluator.associated_projects
+      end
     end
-
-    after(:create) do |organization, evaluator|
-      create_list(:project, evaluator.count, developer: developer)
-    end
   end
-
+  
 end
