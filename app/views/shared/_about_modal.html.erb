@@ -1,0 +1,41 @@
+<div class="modal fade" id="about">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <!-- Accordian Start-->
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <!-- Sign In Start-->
+                <a data-toggle="collapse" data-parent="#accordion" href="#orgAbout">
+                  Organization?
+                </a>
+              </h4>
+            </div>
+            <div id="orgAbout" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <%= Faker::Lorem.paragraphs(5).join("\n") %>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <!-- Sign Up Start-->
+                <a data-toggle="collapse" data-parent="#accordion" href="#devAbout">
+                  Developer?
+                </a>
+              </h4>
+            </div>
+            <div id="devAbout" class="panel-collapse collapse">
+              <div class="panel-body">
+                <%= Faker::Lorem.paragraphs(5).join("\n") %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
