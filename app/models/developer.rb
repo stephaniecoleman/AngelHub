@@ -2,7 +2,9 @@ class Developer < ActiveRecord::Base
   has_many :developer_projects
   has_many :projects, :through => :developer_projects
   has_many :organizations, :through => :projects
+  
   validates_presence_of :name, :github_url
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :validatable
   devise :registerable, :recoverable, :rememberable,

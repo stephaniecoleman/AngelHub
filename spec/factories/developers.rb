@@ -3,10 +3,10 @@
 FactoryGirl.define do
   
   factory :developer do
-    name Faker::Internet.user_name
-    email { Faker::Internet.free_email }
+    name { Faker::Name.name }
+    email { Faker::Internet.email(name) }
     password Faker::Internet.password(8, 12)
-    github_url { Faker::Internet.url(name) }
+    github_url { Faker::Internet.url('github.com/', name) }
 
     factory :developer_with_projects do
 

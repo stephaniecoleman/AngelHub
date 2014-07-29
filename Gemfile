@@ -38,6 +38,7 @@ gem 'figaro'
 #  https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 gem 'cancancan', '~> 1.9'
 
+
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails', '3.0.1'
@@ -59,6 +60,19 @@ group :test, :development do
   # a library that generates random data
   # https://github.com/stympy/faker
   gem 'faker'
+
+  # data visualization for our database
+  # Read: https://github.com/preston/railroady
+  # before use:
+  #     'mkdir doc' from root directory
+  #     run 'brew install graphviz'
+  #     rake diagram:all                        # Generates all class diagrams
+  #     rake diagram:controllers:brief          # Generates an abbreviated class diagram for all controllers
+  #     rake diagram:controllers:complete       # Generates an class diagram for all controllers
+  #     rake diagram:models:brief               # Generates an abbreviated class diagram for all models
+  #     rake diagram:models:complete            # Generates an class diagram for all models
+  # /doc/* is in .gitignore so your diagrams wont be commited
+  gem 'railroady'
 end
 
 # use omniauth protocol to sign in developers

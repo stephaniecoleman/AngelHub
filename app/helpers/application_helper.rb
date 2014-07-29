@@ -9,7 +9,7 @@ module ApplicationHelper
 	end
 
   def modal_links
-    if !signed_in?
+    unless signed_in?
       render 'shared/signin_modal'
     end
   end

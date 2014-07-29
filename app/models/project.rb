@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  # establish the only valid results for status
+  # establish the only valid values for status
   STATUS_OPTIONS = %w[ requested in_progress finished ] 
   enum :status => STATUS_OPTIONS
 

@@ -7,8 +7,15 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
     case user
     when Developer
-        # can :join, Project
+        # developers can view Organizations, but cannot do any of the other crud
+        # actions on them
+        cannot [:create, :update, :destroy], Organization
+        can :read, Organization
     when Organization
+        # organizations can view Developers, but cannot do any of the other crud
+        # actions on them
+        cannot [:create, :update, :destroy], Developer
+        can :read, Developer
         # organizations can edit, update, delete projects if they are the owners
         can :create, Project
         can [:edit, :update, :destroy], Project, :organization_id => user.id
