@@ -8,7 +8,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
-
+    @project = Project.create(project_params)
+    title = project_params[:title].strip.gsub(' ', '_').downcase
+    @project.create_repo(title)
   end
 
   def index
@@ -18,6 +20,6 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:title, :description)
+      params.require(:project).permit(:title, :description, :status)
     end
 end

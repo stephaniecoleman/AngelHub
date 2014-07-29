@@ -14,12 +14,7 @@
   </div>
  </div>
 
- <div class="control-group">
-	<%= f.label :repository, :class => 'control-label' %>
-	<div class="controls">
-  <%= f.text_field :repository, :class => "text_field", placeholder: 'GitHub url' %>
-  </div>
- </div>
+ <%= f.hidden_field :status, :value => :requested  %>
 <br>
 <div class="form-actions">
   <%= f.submit :class => 'btn btn-info' %>
