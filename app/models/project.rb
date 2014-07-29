@@ -10,9 +10,12 @@ class Project < ActiveRecord::Base
   validates_presence_of :title, :description, :status
   validates :status, :inclusion => STATUS_OPTIONS
 
-
-  def create_repo(title)
-  	OCTOKIT_CLIENT.create_repository(title)
+  def create_repo(params)
+  	OCTOKIT_CLIENT.create_repository(
+  		title = params[:title], options = {
+  				auto_init: true, 
+  				description: params[:description],
+  				homepage: params[:url]})
   end
 
 end
