@@ -15,7 +15,9 @@ FactoryGirl.define do
       end
 
       after(:create) do |developer, evaluator|
-        developer.projects << evaluator.associated_projects
+        associated_projects = evaluator.associated_projects
+        associated_projects = associated_projects.call if associated_projects.is_a? Proc
+        developer.projects << associated_projects
       end
     end
   end
