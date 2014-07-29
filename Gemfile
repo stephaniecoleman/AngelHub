@@ -28,12 +28,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # user authentication
 gem 'devise'
 
-# organize application secrets and api keys. 
+# organize application secrets and api keys.
 # Read more: https://github.com/laserlemon/figaro
 gem 'figaro'
 
 # role based authorization gem
-# Read: 
+# Read:
 #  https://github.com/CanCanCommunity/cancancan
 #  https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 gem 'cancancan', '~> 1.9'
@@ -48,11 +48,11 @@ group :test, :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
-  
+
   gem 'binding_of_caller'
-  
+
    # A library for setting up Ruby/ActiveRecord objects as test data
-  # Read: 
+  # Read:
   #   https://github.com/thoughtbot/factory_girl
   #   http://rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
   gem 'factory_girl_rails'
@@ -76,7 +76,7 @@ group :test, :development do
 end
 
 # use omniauth protocol to sign in developers
-# Read: 
+# Read:
 #  https://github.com/intridea/omniauth
 #  https://github.com/intridea/omniauth-github
 #  https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
@@ -95,3 +95,6 @@ gem 'omniauth-github'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# CarrierWave for File Uploads
+# https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave'
