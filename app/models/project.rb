@@ -7,7 +7,15 @@ class Project < ActiveRecord::Base
   has_many :developer_project
   has_many :developers, :through => :developer_project
   
-  validates_presence_of :title, :repository, :description, :status
+  validates_presence_of :title, :description, :status
   validates :status, :inclusion => STATUS_OPTIONS
+
+  def create_repo(params)
+  	OCTOKIT_CLIENT.create_repository(
+  		title = params[:title], options = {
+  				auto_init: true, 
+  				description: params[:description],
+  				homepage: params[:url]})
+  end
 
 end

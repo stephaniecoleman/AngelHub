@@ -14,4 +14,16 @@ module ApplicationHelper
     end
   end
 
+  def request_link
+  	if current_user.class == Organization
+  		render 'shared/request_link'
+  	end
+  end
+
+  def request_modal
+  	if !!request_link
+  		render 'shared/request_modal'
+  	end
+  end
+
 end
