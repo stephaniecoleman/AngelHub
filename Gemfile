@@ -101,3 +101,4 @@ gem 'omniauth-github'
 # CarrierWave for File Uploads
 # https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave'
+gem 'mini_magick'

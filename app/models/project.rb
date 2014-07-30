@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   
   validates_presence_of :title, :description, :status
   validates :status, :inclusion => STATUS_OPTIONS
+  mount_uploader :project_pic, ProjectPicUploader
 
   def create_repo(params)
   	OCTOKIT_CLIENT.create_repository(
