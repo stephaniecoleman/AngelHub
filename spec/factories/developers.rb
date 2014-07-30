@@ -11,7 +11,8 @@ FactoryGirl.define do
     factory :developer_with_projects do
 
       ignore do
-        associated_projects []
+        count 0
+        associated_projects { build_list(:projects, count) }
       end
 
       after(:create) do |developer, evaluator|

@@ -43,15 +43,15 @@ RSpec.describe Organization, :type => :model do
     it "has many projects" do
       expect{ create(:organization_with_projects) }.not_to raise_error
 
-      organization = create(:organization_with_projects, count: 5)
+      organization = create(:organization_with_projects, project_count: 5)
       expect(organization.projects.count).to be(5)
     end
 
     it "has developers through projects" do
-      expect{ create(:organization_with_projects, developers: true) }.not_to raise_error
 
-      organization = create(:organization_with_projects, developers: true)
-      expect(organization.developers.count).not_to be_zero
+      organization = create(:organization_with_projects)
+      create(:developer_with_projects, :associated_projects => organization.projects.first )
+      expect(organization.developers).to be_one
     end
 
   end
