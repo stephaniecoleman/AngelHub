@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    binding.pry
     @project = Project.create(project_params)
     current_user.projects << @project
     @project.create_repo(repo_parameters)
