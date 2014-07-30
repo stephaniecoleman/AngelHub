@@ -1,7 +1,18 @@
-<%= form_for(project) do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :description %>
-  <%= f.text_field :repository %>
+<div class="well" role="form">
+<%= form_for(:project, url: projects_path, :html => {:class => "form-horizontal"}) do |f| %>
 
-  <%= f.submit %>
+<div class="control-group">
+  <%= f.text_field :title, placeholder: "Project Title", :maxlength => 30, class: "form-control text_field" %>
+ </div><br>
+
+ <div class="control-group">
+  <%= f.text_area :description, :class => "form-control text_field", placeholder: 'Project Description' %>
+ </div>
+
+ <%= f.hidden_field :status, :value => :requested  %>
+<br>
+<div class="form-actions">
+  <%= f.submit :class => 'btn btn-info' %>
+</div>
 <% end %>
+</div>
