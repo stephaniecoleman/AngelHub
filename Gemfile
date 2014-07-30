@@ -39,6 +39,22 @@ gem 'figaro'
 #  https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 gem 'cancancan', '~> 1.9'
 
+# use omniauth protocol to sign in developers
+# Read:
+#  https://github.com/intridea/omniauth
+#  https://github.com/intridea/omniauth-github
+#  https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
+gem 'omniauth'
+gem 'omniauth-github'
+
+# CarrierWave for File Uploads
+# https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave'
+
+
+# explain please ___________
+gem 'mini_magick'
+
 
 group :test, :development do
   gem 'rspec'
@@ -76,13 +92,6 @@ group :test, :development do
   gem 'railroady'
 end
 
-# use omniauth protocol to sign in developers
-# Read:
-#  https://github.com/intridea/omniauth
-#  https://github.com/intridea/omniauth-github
-#  https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
-gem 'omniauth'
-gem 'omniauth-github'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -95,8 +104,3 @@ gem 'omniauth-github'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-# CarrierWave for File Uploads
-# https://github.com/carrierwaveuploader/carrierwave
-gem 'carrierwave'
-gem 'mini_magick'

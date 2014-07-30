@@ -15,4 +15,5 @@ module CurrentUserHelper
       destroy_organization_session_path
     end
   end
+
 end
