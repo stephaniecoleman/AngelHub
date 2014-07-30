@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
-
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -54,6 +52,10 @@ gem 'omniauth-github'
 gem 'carrierwave'
 
 
+# explain please ___________
+gem 'mini_magick'
+
+
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails', '3.0.1'
@@ -102,4 +104,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

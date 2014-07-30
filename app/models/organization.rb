@@ -8,4 +8,5 @@ class Organization < ActiveRecord::Base
   has_many :developers, :through => :projects
 
   validates_presence_of :name, :description, :url
+  mount_uploader :avatar, AvatarUploader
 end
