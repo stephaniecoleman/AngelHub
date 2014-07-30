@@ -8,9 +8,12 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create(project_params)
+    @project = Project.new(project_params)
     current_user.projects << @project
-    @project.create_repo(repo_parameters)
+    new_repo = @project.create_repo(repo_parameters)
+    @project.repository = new_repo[:html_url]
+    @project.save
+    redirect_to project_path(@project)
   end
 
   def index

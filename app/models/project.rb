@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
 
   def create_repo(params)
   	OCTOKIT_CLIENT.create_repository(
-  		title = params[:title], options = {
+  		params[:title], {
   				auto_init: true, 
   				description: params[:description],
   				homepage: params[:url]})
