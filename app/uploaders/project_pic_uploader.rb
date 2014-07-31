@@ -37,7 +37,7 @@ class ProjectPicUploader < CarrierWave::Uploader::Base
   end
 
   version :gallery do
-    process :resize_to_limit => [500, 500]
+    process :resize_to_limit => [400, 400]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
