@@ -30,7 +30,7 @@ class Project < ActiveRecord::Base
   # increment the status of the project
   # requested => in_progress => finished
   #
-  # takes an optional argument, if given it forces to project to have
+  # takes an optional argument, if given it forces the project to have
   # the status implied by the argument
   #     progress(0)  # => status: :requested
   #     progress(1)  # => status: :in_progress
