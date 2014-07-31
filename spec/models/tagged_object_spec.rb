@@ -11,7 +11,7 @@ RSpec.describe TaggedObject, :type => :model do
           tag: build_stubbed(:tag),
           taggable: build_stubbed(:project)
         }
-        tagged_obj = create(:tagged_object, attributes)
+        create(:tagged_object, attributes)
 
         invalid_tagged_object = build(:tagged_object, attributes)
         expect(invalid_tagged_object).to be_invalid

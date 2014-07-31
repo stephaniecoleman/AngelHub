@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   # model/concerns/taggable.rb
-  # has established relationships, scopes, and helper methods for taggable
-  # models
+  # has established relationships, scopes, and helper methods for 
+  # taggable models
   include Taggable
 
 
@@ -20,7 +20,8 @@ class Project < ActiveRecord::Base
   # organizations must give their projects uniqueness names
   validates :title, :uniqueness => { :scope => :organization_id }
   validates :status, :inclusion => POSSIBLE_STATUSES
-
+  
+  # What is this?
   mount_uploader :project_pic, ProjectPicUploader
 
   # scopes:
@@ -28,7 +29,6 @@ class Project < ActiveRecord::Base
   scope :popular, lambda { |limit = 4|
     order(:developer_count => :desc).limit(limit)
   }
-
   # recent
   scope :recent, lambda { |limit = 4|
     order(:created_at => :desc).limit(limit)
@@ -45,7 +45,30 @@ class Project < ActiveRecord::Base
   scope :search, lambda { |query, limit = 4|
     
   }
+  # in_prog
+  scope :in_prog, lambda { |limit = 4|
+    in_progress.shuffle.take(limit)
+  }
+  # random
+  scope :rand, lambda { |limit = 4|
+    all.shuffle.take(limit)
+  }
 
+
+
+  
+  # increment the status of the project
+  # requested => in_progress => finished
+  #
+  # takes an optional argument, if given it forces the project to have
+  # the status implied by the argument
+  #     progress(0)  # => status: :requested
+  #     progress(1)  # => status: :in_progress
+  #     progress(2)  # => status: :finished
+  # or
+  #     progress(:requested)    # => status: :requested
+  #     progress(:in_progress)  # => status: :in_progress
+  #     progress(:finished)     # => status: :finished
   def progress(status_code=nil)
     tap do |project|
       if status_code
@@ -56,12 +79,16 @@ class Project < ActiveRecord::Base
     end
   end
 
+
+  
   def create_repo(params)
     OCTOKIT_CLIENT.create_repository(
-  		params[:title], {
-  				auto_init: true,
-  				description: params[:description],
-  				homepage: params[:url]})
+      params[:title], {
+        auto_init: true,
+        description: params[:description],
+        homepage: params[:url]
+      }
+    )
   end
 
 

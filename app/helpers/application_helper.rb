@@ -41,4 +41,9 @@ module ApplicationHelper
     orgs = Organization.send(skope, *arg)
     render 'shared/row', projects: orgs
   end
+
+  def row_fill_user(skope, *arg)
+    projects = current_user.projects.send(skope, *arg)
+    render 'shared/row', projects: projects
+  end
 end
