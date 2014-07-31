@@ -32,7 +32,8 @@ module ApplicationHelper
   	end
   end
 
-  def row_fill(arg)
-
+  def row_fill(scope)
+    projects = Project.scope
+    render 'shared/row', projects: projects
   end
 end
