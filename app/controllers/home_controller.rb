@@ -4,8 +4,8 @@ class HomeController < ApplicationController
       user_type = current_user.class.name.pluralize.underscore
       # renders the current users dashboard
       # should be located in 
-      #   developers/dashboard.html.erb for developers
-      #   organizations/dashboard.html.erb for organizations
+      # developers/dashboard.html.erb for developers
+      # organizations/dashboard.html.erb for organizations
       @projects = current_user.projects
       render "#{user_type}/dashboard"
     end
