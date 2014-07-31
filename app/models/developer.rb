@@ -1,5 +1,5 @@
 class Developer < ActiveRecord::Base
-  has_many :developer_projects
+  has_many :developer_projects, :dependent => :destroy
   has_many :projects, :through => :developer_projects
   has_many :organizations, :through => :projects
   
