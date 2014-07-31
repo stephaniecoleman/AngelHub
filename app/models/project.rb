@@ -20,12 +20,34 @@ class Project < ActiveRecord::Base
 
   mount_uploader :project_pic, ProjectPicUploader
 
-  # scopes
+  # scopes:
+  # popular
   scope :popular, lambda { |limit = 4|
     order(:developer_count => :desc).limit(limit)
   }
 
-  #scope :recent, lambda
+  # recent
+  scope :recent, lambda { |limit = 4|
+    order(:created_at => :desc).limit(limit)
+  }
+  # finished
+  scope :success, lambda { |limit = 4|
+    finished.shuffle.take(limit)
+  }
+  # featured (status: [0, 1]) indicates "in prog" and "req"
+  scope :featured, lambda { |limit = 4|
+    where(status: [0, 1]).shuffle.take(limit)
+  }
+
+  def progress(status_code=nil)
+    tap do |project|
+      if status_code
+        project.update(status: status_code)
+      else
+        project.increment(:status).save
+      end
+    end
+  end
 
   def create_repo(params)
     OCTOKIT_CLIENT.create_repository(

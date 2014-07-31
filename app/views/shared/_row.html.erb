@@ -1,0 +1,15 @@
+<% projects.each do |proj| %>
+<div class="col-xs-3">
+  <div class="project">
+    <div class="project-image">
+      <img src="<%= fake_image %>"> <!-- will be project.project_pic -->
+    </div> <!-- project-image -->
+    <div class="proj.title">
+      <b><%= proj.try(:title) || proj.try(:name) %></b>
+    </div> <!-- project-title -->
+    <div class="project-description">
+      <%= proj.description %>
+    </div> <!-- project-description -->
+  </div> <!-- project -->
+</div> <!-- col-xs-3 -->
+<% end %>

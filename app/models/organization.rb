@@ -10,4 +10,8 @@ class Organization < ActiveRecord::Base
   validates_presence_of :name, :description, :url
   validates_uniqueness_of :name
   mount_uploader :avatar, AvatarUploader
+
+  scope :featured, lambda { |limit = 4|
+    all.shuffle.take(limit)
+  }
 end
