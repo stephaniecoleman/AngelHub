@@ -25,6 +25,7 @@ class Project < ActiveRecord::Base
   scope :popular, lambda { |limit = 4|
     order(:developer_count => :desc).limit(limit)
   }
+
   # recent
   scope :recent, lambda { |limit = 4|
     order(:created_at => :desc).limit(limit)
@@ -37,6 +38,16 @@ class Project < ActiveRecord::Base
   scope :featured, lambda { |limit = 4|
     where(status: [0, 1]).shuffle.take(limit)
   }
+
+  def progress(status_code=nil)
+    tap do |project|
+      if status_code
+        project.update(status: status_code)
+      else
+        project.increment(:status).save
+      end
+    end
+  end
 
   def create_repo(params)
     OCTOKIT_CLIENT.create_repository(
