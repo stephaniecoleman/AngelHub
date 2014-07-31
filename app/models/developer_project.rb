@@ -6,6 +6,6 @@ class DeveloperProject < ActiveRecord::Base
 
 
   def change_status_of_project
-    project.update(status: 'in_progress') if project.requested?
+    project.progress(:in_progress) if project.requested?
   end
 end

@@ -25,6 +25,20 @@ class Project < ActiveRecord::Base
     order(:developer_count => :desc).limit(limit)
   }
 
+
+  # increment the status of the project
+  # requested => in_progress => finished
+  #
+  # takes an optional argument, if given it forces to project to have
+  # the status implied by the argument
+  #     progress(0)  # => status: :requested
+  #     progress(1)  # => status: :in_progress
+  #     progress(2)  # => status: :finished
+  # or
+  #     progress(:requested)    # => status: :requested
+  #     progress(:in_progress)  # => status: :in_progress
+  #     progress(:finished)     # => status: :finished
+
   def progress(status_code=nil)
     tap do |project|
       if status_code
