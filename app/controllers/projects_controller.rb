@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-
   # -defined by CanCanCan
   load_and_authorize_resource
 
@@ -17,13 +16,17 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    
+     @projects = Project.all
+  end
+
+  def show
+    @project = Project.find(params[:id])
   end
 
   private
 
     def project_params
-      params.require(:project).permit(:title, :description, :status)
+      params.require(:project).permit(:title, :description, :status, :id)
     end
 
     def repo_parameters
