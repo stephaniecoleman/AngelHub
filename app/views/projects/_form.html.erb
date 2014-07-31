@@ -2,24 +2,29 @@
 <%= form_for(:project, url: projects_path, :html => {:class => "form-horizontal"}) do |f| %>
 
 <div class="control-group">
-  <%= f.text_field :title, placeholder: "Project Title", :maxlength => 30, class: "form-control text_field" %>
+	<%= f.label :title, 'Project Name' %>
+  <%= f.text_field :title, placeholder: "Keep it short and pithy, please!", :maxlength => 30, class: "form-control text_field" %>
  </div><br>
 
  <div class="control-group">
-  <%= f.text_area :description, :class => "form-control text_field", placeholder: 'Project Description' %>
+  <%= f.label :description, 'Project Description' %>
+  <%= f.text_area :description, :class => "form-control text_field", placeholder: 'Tell us about your dream for this project in a couple sentences or less.' %><br>
  </div>
 
+ <div class="control-group">
+	<%= f.label :location, 'Project Location' %>
+  <%= f.text_field :location, :maxlength => 50, class: "form-control text_field" %>
+ </div><br>
+
  <%= f.hidden_field :status, :value => :requested  %>
-<br>
+
 <div class="control-group">
-  <%= f.label :project_pic, "Add your organization's picture or logo" %>
+  <%= f.label :project_pic, "Project Picture" %>
   <%= f.file_field :project_pic %>
-</div>
+</div> <br>
 
-
-<br>
 <div class="form-actions">
-  <%= f.submit :class => 'btn btn-info' %>
+  <%= f.submit "Create My Project", :class => 'btn btn-info' %>
 </div>
 <% end %>
 </div>
