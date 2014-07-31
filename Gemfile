@@ -51,6 +51,10 @@ gem 'omniauth-github'
 # https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave'
 
+# library that helps construct sql querries
+# https://github.com/camertron/arel-helpers
+gem 'arel-helpers'
+
 # explain please
 gem 'mini_magick'
 
