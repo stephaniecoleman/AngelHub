@@ -3,24 +3,18 @@ module Taggable
 
 
   included do
-    include ArelHelpers::ArelTable
-    include ArelHelpers::JoinAssociation
 
     has_many :tagged_objects, :as => :taggable, :dependent => :destroy
     has_many :tags, :through => :tagged_objects
 
-    scope :tagged_as, -> (*tags) do
-      tags.map { |tag|
-        self.joins(:tags).where(tags: { name: tag})
-      }.inject(&:&)
-       # self.joins(:tags).where(tags: { name: 'Sanitation'}) & self.joins(:tags).where(tags: { name: 'Health'})
-        
-        # raise ArgumentError, 'no tags provided' if tags.empty?
+    scope :tagged_as_any, lambda{ |*tags|
+      joins(:tags).where(:tags => {:name => tags})
+                  .group("#{table_name}.id")
+    }
 
-      #  tags.inject(joins(:tags)) do |collection_proxy, tag|
-      #   collection_proxy.where('tags.name = ?', tag)
-      # end
-    end
+    scope :tagged_as_all, lambda{ |*tags|
+      tagged_as_any(*tags).having('COUNT(tagged_objects.taggable_id) = ?', tags.count)
+    }
   end
 
   def tag_as(*tags)
@@ -28,11 +22,12 @@ module Taggable
       if tag.is_a? Tag
         tag
       else
-        tag = tag.to_s
-        Tag.find_by_name(tag) || Tag.create(name: tag)
+        tag.to_s.split(',').map do |t|
+          Tag.find_by_name(t) || Tag.create(name: t)
+        end
       end
     end
-    self.tags << tags
+    self.tags << tags.flatten
   end
 
 end

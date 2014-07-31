@@ -36,7 +36,7 @@ RSpec.describe Project, :type => :model do
       project = create(:project)
       project.tags << create(:tag, name: "Health")
 
-      expect(Project.tagged_as('Health')).to include(project)
+      expect(Project.tagged_as_all('Health')).to include(project)
     end
 
     it "refines search for a project with mulitple tags" do
@@ -49,8 +49,8 @@ RSpec.describe Project, :type => :model do
       specific.tags << sanitation_tag
       general.tags << health_tag
 
-      expect(Project.tagged_as('Health', 'Sanitation')).to include(specific)
-      expect(Project.tagged_as('Health', 'Sanitation')).to_not include(general)
+      expect(Project.tagged_as_all('Health', 'Sanitation')).to include(specific)
+      expect(Project.tagged_as_all('Health', 'Sanitation')).to_not include(general)
     end
   end
 end
