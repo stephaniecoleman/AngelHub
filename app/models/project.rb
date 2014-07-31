@@ -39,7 +39,7 @@ class Project < ActiveRecord::Base
   }
   # featured (status: [0, 1]) indicates "in prog" and "req"
   scope :featured, lambda { |limit = 4|
-    where(status: [:requested, :in_progress]).shuffle.take(limit)
+    where(status: [0, 1]).shuffle.take(limit)
   }
 
   scope :search, lambda { |query, limit = 4|

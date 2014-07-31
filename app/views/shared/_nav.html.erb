@@ -16,10 +16,12 @@
 			 	<li><a a data-toggle="modal" href="#about">About</a></li>
 			 	<%= request_link %>
 			 	<%= project_link %>
-				<li>
-				 	<%= form_tag(:controller => "projects", :action => "search", :method => "get", :class => "navbar-form navbar-left", :role => "search" ) do %>
-					  <%= text_field_tag :search %>
-					  <%= submit_tag "Search", :name => nil %>
+				<li class="navbar-form navbar-left">
+				 	<%= form_tag(search_projects_path, method: :get, role: "search") do %>
+				 		<div class="form-group">
+						  <%= text_field_tag :search, nil, {class: "form-control", :placeholder => "Search projects"} %>
+						  <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+					  </div>
 					<% end %>
 				</li>
 			</ul>

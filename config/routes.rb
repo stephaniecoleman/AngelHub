@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   end
 
   resources :developers
-  resources :projects do
+  resources :projects
+
+  resource :projects do
     get 'search' => 'projects#search'
   end
 
