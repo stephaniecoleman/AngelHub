@@ -3,19 +3,22 @@
 FactoryGirl.define do
   
   factory :developer do
-    name Faker::Internet.user_name
-    email { Faker::Internet.free_email }
+    name { Faker::Name.name }
+    email { Faker::Internet.email(name) }
     password Faker::Internet.password(8, 12)
-    github_url { Faker::Internet.url(name) }
+    github_url { Faker::Internet.url('github.com/', name) }
 
     factory :developer_with_projects do
 
       ignore do
-        associated_projects []
+        count 0
+        associated_projects { build_list(:projects, count) }
       end
 
       after(:create) do |developer, evaluator|
-        developer.projects << evaluator.associated_projects
+        associated_projects = evaluator.associated_projects
+        associated_projects = associated_projects.call if associated_projects.is_a? Proc
+        developer.projects << associated_projects
       end
     end
   end

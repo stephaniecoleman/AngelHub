@@ -9,7 +9,7 @@ module ApplicationHelper
 	end
 
   def modal_links
-    if !signed_in?
+    unless signed_in?
       render 'shared/signin_modal'
     end
   end
@@ -20,10 +20,19 @@ module ApplicationHelper
   	end
   end
 
+  def project_link
+    if signed_in?
+      render 'shared/project_link'
+    end
+  end
+
   def request_modal
   	if !!request_link
   		render 'shared/request_modal'
   	end
   end
 
+  def row_fill(arg)
+
+  end
 end

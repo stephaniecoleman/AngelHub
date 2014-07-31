@@ -41,6 +41,13 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
+  # enable omniauth mocks
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = {
+    :provider => 'github', 
+    :uid => Faker::Number.number(10)
+  }
+
   # Enable FactoryGirl syntax in tests
   config.include FactoryGirl::Syntax::Methods
 end

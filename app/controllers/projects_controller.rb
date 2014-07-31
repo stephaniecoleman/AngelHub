@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-
   # -defined by CanCanCan
   load_and_authorize_resource
 
@@ -8,19 +7,26 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create(project_params)
+    @project = Project.new(project_params)
     current_user.projects << @project
-    @project.create_repo(repo_parameters)
+    new_repo = @project.create_repo(repo_parameters)
+    @project.repository = new_repo[:html_url]
+    @project.save
+    redirect_to project_path(@project)
   end
 
   def index
-    
+     @projects = Project.all
+  end
+
+  def show
+    @project = Project.find(params[:id])
   end
 
   private
 
     def project_params
-      params.require(:project).permit(:title, :description, :status)
+      params.require(:project).permit(:title, :description, :status, :id)
     end
 
     def repo_parameters

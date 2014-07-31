@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
-
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -31,15 +29,31 @@ gem 'octokit', "~> 3.0"
 # user authentication
 gem 'devise'
 
-# organize application secrets and api keys. 
+# organize application secrets and api keys.
 # Read more: https://github.com/laserlemon/figaro
 gem 'figaro'
 
 # role based authorization gem
-# Read: 
+# Read:
 #  https://github.com/CanCanCommunity/cancancan
 #  https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 gem 'cancancan', '~> 1.9'
+
+# use omniauth protocol to sign in developers
+# Read:
+#  https://github.com/intridea/omniauth
+#  https://github.com/intridea/omniauth-github
+#  https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
+gem 'omniauth'
+gem 'omniauth-github'
+
+# CarrierWave for File Uploads
+# https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave'
+
+# explain please
+gem 'mini_magick'
+
 
 group :test, :development do
   gem 'rspec'
@@ -50,11 +64,11 @@ group :test, :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
-  
+
   gem 'binding_of_caller'
-  
+
    # A library for setting up Ruby/ActiveRecord objects as test data
-  # Read: 
+  # Read:
   #   https://github.com/thoughtbot/factory_girl
   #   http://rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
   gem 'factory_girl_rails'
@@ -62,15 +76,22 @@ group :test, :development do
   # a library that generates random data
   # https://github.com/stympy/faker
   gem 'faker'
+
+  # data visualization for our database
+  # Read: https://github.com/preston/railroady
+  # before use:
+  #     'mkdir doc' from root directory
+  #     run 'brew install graphviz'
+  #     rake diagram:all                        # Generates all class diagrams
+  #     rake diagram:controllers:brief          # Generates an abbreviated class diagram for all controllers
+  #     rake diagram:controllers:complete       # Generates an class diagram for all controllers
+  #     rake diagram:models:brief               # Generates an abbreviated class diagram for all models
+  #     rake diagram:models:complete            # Generates an class diagram for all models
+  # /doc/* is in .gitignore so your diagrams wont be commited
+  gem 'railroady'
+  
 end
 
-# use omniauth protocol to sign in developers
-# Read: 
-#  https://github.com/intridea/omniauth
-#  https://github.com/intridea/omniauth-github
-#  https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
-gem 'omniauth'
-gem 'omniauth-github'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -83,4 +104,3 @@ gem 'omniauth-github'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

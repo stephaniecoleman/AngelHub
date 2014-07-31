@@ -23,6 +23,16 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation" %></div>
 
 <div class="form-group">
+	<%= f.label :avatar, "Add your organization's picture or logo" %>
+  <%= f.file_field :avatar %>
+</div>
+
+<div class="form-group">
+  <%= f.label :remote_avatar_url, "or paste an image URL" %>
+  <%= f.text_field :remote_avatar_url, :class => 'form-control', :placeholder => "http://" %>
+</div>
+
+<div class="form-group">
   <%= f.submit "Sign Up", class: "btn btn-default form-control"  %></div>
 <% end %>
 </div>

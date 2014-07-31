@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728173750) do
+ActiveRecord::Schema.define(version: 20140731031933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140728173750) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "avatar"
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
@@ -80,6 +81,27 @@ ActiveRecord::Schema.define(version: 20140728173750) do
     t.datetime "updated_at"
     t.integer  "organization_id"
     t.integer  "status",          default: 0
+    t.string   "project_pic"
   end
+
+  create_table "tagged_objects", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tagged_objects", ["tag_id"], name: "index_tagged_objects_on_tag_id", using: :btree
+  add_index "tagged_objects", ["taggable_id"], name: "index_tagged_objects_on_taggable_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.integer  "tagged_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
 
 end

@@ -2,17 +2,11 @@
 <%= form_for(:project, url: projects_path, :html => {:class => "form-horizontal"}) do |f| %>
 
 <div class="control-group">
-	<%= f.label :desired_project, :class => 'control-label' %>
-	<div class="controls">
-  <%= f.text_field :title, :class => "text_field", placeholder: "Project name here", :maxlength => 30 %>
-  </div>
- </div>
+  <%= f.text_field :title, placeholder: "Project Title", :maxlength => 30, class: "form-control text_field" %>
+ </div><br>
 
  <div class="control-group">
-	<%= f.label :description, :class => 'control-label' %>
-	<div class="controls">
-  <%= f.text_area :description, :class => "text_field", placeholder: 'What do you envision for this project?' %>
-  </div>
+  <%= f.text_area :description, :class => "form-control text_field", placeholder: 'Project Description' %>
  </div>
 
  <%= f.hidden_field :status, :value => :requested  %>

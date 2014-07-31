@@ -16,23 +16,17 @@ FactoryGirl.define do
     factory :organization_with_projects do
 
       ignore do
-        count 5
-        # generate developers for each project
-        developers false
+        project_count 5
       end
 
       after(:create) do |organization, evaluator|
-        count = evaluator.count
-        list = create_list(:project, count, organization: organization)
-
-        # if asked for developers, assign a random list of projects to a developer
-        if evaluator.developers
-          count.times do
-            random_projects = list.sample(rand(1..count))
-            create(:developer_with_projects, :associated_projects => random_projects)
-          end
-        end
+        project_count = evaluator.project_count
+        project_count = project_count.call if project_count.is_a? Proc
+        project_count = project_count.to_i
+        create_list(:project, project_count, organization: organization)
       end
+
+
     end
   end
 

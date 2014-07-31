@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     put 'organizations/:id' => 'organizations/registrations#update'
     patch 'organizations/:id' => 'organizations/registrations#update'
 
-    post 'sign_in' => 'devise/sessions#create', :as => 'organization_session'
+    get 'sign_in' => 'organizations/sessions#new'
+    post 'sign_in' => 'organizations/sessions#create', :as => 'organization_session'
+
     delete 'sign_out' => 'devise/sessions#destroy', :as => 'destroy_organization_session'
   end
-
-
 
   devise_for :developer, path: '', controllers: { 
     omniauth_callbacks: 'github_callbacks',
