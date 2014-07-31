@@ -8,6 +8,8 @@ class HomeController < ApplicationController
       # organizations/dashboard.html.erb for organizations
       @projects = current_user.projects
       render "#{user_type}/dashboard"
+    else
+      render "projects/index"
     end
   end
 
