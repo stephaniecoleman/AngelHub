@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   # model/concerns/taggable.rb
-  # has established relationships, scopes, and helper methods for taggable
-  # models
+  # has established relationships, scopes, and helper methods for 
+  # taggable models
   include Taggable
 
   # establish the only valid values for status
@@ -18,6 +18,7 @@ class Project < ActiveRecord::Base
   validates :title, :uniqueness => { :scope => :organization_id }
   validates :status, :inclusion => POSSIBLE_STATUSES
   
+  # What is this?
   mount_uploader :project_pic, ProjectPicUploader
 
   # scopes
@@ -49,6 +50,8 @@ class Project < ActiveRecord::Base
     end
   end
 
+
+  
   def create_repo(params)
     OCTOKIT_CLIENT.create_repository(
   		params[:title], {
