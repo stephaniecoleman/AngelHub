@@ -21,12 +21,26 @@ class Project < ActiveRecord::Base
   # What is this?
   mount_uploader :project_pic, ProjectPicUploader
 
-  # scopes
+  # scopes:
+  # popular
   scope :popular, lambda { |limit = 4|
     order(:developer_count => :desc).limit(limit)
   }
+  # recent
+  scope :recent, lambda { |limit = 4|
+    order(:created_at => :desc).limit(limit)
+  }
+  # finished
+  scope :success, lambda { |limit = 4|
+    finished.shuffle.take(limit)
+  }
+  # featured (status: [0, 1]) indicates "in prog" and "req"
+  scope :featured, lambda { |limit = 4|
+    where(status: [0, 1]).shuffle.take(limit)
+  }
 
 
+  
   # increment the status of the project
   # requested => in_progress => finished
   #
@@ -39,7 +53,6 @@ class Project < ActiveRecord::Base
   #     progress(:requested)    # => status: :requested
   #     progress(:in_progress)  # => status: :in_progress
   #     progress(:finished)     # => status: :finished
-
   def progress(status_code=nil)
     tap do |project|
       if status_code

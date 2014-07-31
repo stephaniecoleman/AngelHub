@@ -32,7 +32,13 @@ module ApplicationHelper
   	end
   end
 
-  def row_fill(arg)
+  def row_fill_p(skope, *arg)
+    projects = Project.send(skope, *arg)
+    render 'shared/row', projects: projects
+  end
 
+  def row_fill_o(skope, *arg)
+    orgs = Organization.send(skope, *arg)
+    render 'shared/row', projects: orgs
   end
 end
