@@ -14,7 +14,9 @@
               <h4 class="subtitle"><%= @project.description %></h4>
             </div>
             <div class="col-xs-6">
-              <img src="<%= @project.project_pic.gallery %>"/>   
+              <img src="<%= @project.project_pic.gallery %>"/>
+              <%= status_button(current_user, @project)%>
+              <%= button_to "Delete",  project_path(@project), :class => "btn btn-lg btn-dark btn-default", method: :delete %>   
             </div> 
           </div>
           <hr class="bs-docs-separator">
