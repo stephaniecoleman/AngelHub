@@ -12,11 +12,19 @@
 		</div>
 		<%= header_links %>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			 <ul class="nav navbar-nav">
+		  <ul class="nav navbar-nav">
 			 	<li><a a data-toggle="modal" href="#about">About</a></li>
 			 	<%= request_link %>
 			 	<%= project_link %>
-			 </ul>
+				<li class="navbar-form navbar-left">
+				 	<%= form_tag(search_projects_path, method: :get, role: "search") do %>
+				 		<div class="form-group">
+						  <%= text_field_tag :search, nil, {class: "form-control", :placeholder => "Search projects"} %>
+						  <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+					  </div>
+					<% end %>
+				</li>
+			</ul>
 		</div>
 	</div>
 </nav>

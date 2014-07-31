@@ -4,6 +4,9 @@ class Project < ActiveRecord::Base
   # taggable models
   include Taggable
 
+
+  include ArelHelpers::ArelTable
+
   # establish the only valid values for status
   POSSIBLE_STATUSES = %w[ requested in_progress finished ]
   enum :status => POSSIBLE_STATUSES
@@ -37,6 +40,10 @@ class Project < ActiveRecord::Base
   # featured (status: [0, 1]) indicates "in prog" and "req"
   scope :featured, lambda { |limit = 4|
     where(status: [0, 1]).shuffle.take(limit)
+  }
+
+  scope :search, lambda { |query, limit = 4|
+    
   }
   # in_prog
   scope :in_prog, lambda { |limit = 4|
@@ -83,5 +90,6 @@ class Project < ActiveRecord::Base
       }
     )
   end
+
 
 end
