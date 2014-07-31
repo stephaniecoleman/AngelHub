@@ -11,14 +11,30 @@ class Ability
         # actions on them
         cannot [:create, :update, :destroy], Organization
         can :read, Organization
+
+        # Devs can add tags to projects they are a part of
+        can :create, Tag
+        can :create, TaggedObject do |tagged_object|
+            developers = tagged_object.taggable.try(:developers)
+            developers && developers.find(user)
+        end
     when Organization
         # organizations can view Developers, but cannot do any of the other crud
         # actions on them
+        cannot :manage, DeveloperProjects
+
         cannot [:create, :update, :destroy], Developer
         can :read, Developer
         # organizations can edit, update, delete projects if they are the owners
         can :create, Project
         can [:edit, :update, :destroy], Project, :organization_id => user.id
+
+        # Organizations can add tags to projects they create
+        can :create, Tag
+        can :create, TaggedObject do |tagged_object|
+            organization = tagged_object.taggable.try(:organization)
+            organization == user
+        end
     end
 
     # all users(devs and organizations) can see projects
