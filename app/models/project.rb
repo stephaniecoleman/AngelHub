@@ -38,6 +38,15 @@ class Project < ActiveRecord::Base
   scope :featured, lambda { |limit = 4|
     where(status: [0, 1]).shuffle.take(limit)
   }
+  # in_prog
+  scope :in_prog, lambda { |limit = 4|
+    in_progress.shuffle.take(limit)
+  }
+  # random
+  scope :rand, lambda { |limit = 4|
+    all.shuffle.take(limit)
+  }
+
 
   def progress(status_code=nil)
     tap do |project|
@@ -51,10 +60,12 @@ class Project < ActiveRecord::Base
 
   def create_repo(params)
     OCTOKIT_CLIENT.create_repository(
-  		params[:title], {
-  				auto_init: true,
-  				description: params[:description],
-  				homepage: params[:url]})
+      params[:title], {
+        auto_init: true,
+        description: params[:description],
+        homepage: params[:url]
+      }
+    )
   end
 
 end

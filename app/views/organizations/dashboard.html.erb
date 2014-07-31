@@ -1,22 +1,22 @@
-<div class="row row-fluid homepage">  
+<div class="row row-fluid homepage">
   <!-- Requested Projects Container -->
    <div class="row row-fluid">
      <h2>Requested Projects</h2>
-     <%= render 'shared/projects' %>
+     <%= row_fill_user(recent, 5) %>
     </div>
     <!-- In Progress Projects Container -->
     <div class="row row-fluid">
       <h2>In Progress Projects</h2>
-        <%= render 'shared/projects' %>
+        <%= row_fill_user(in_prog, 5) %>
     </div>
   <!-- Completed Projects -->
     <div class="row row-fluid">
       <h2>Completed Projects</h2>
-        <%= render 'shared/projects' %>
+        <%= row_fill_user(success, 5) %>
     </div>
-    <!-- Open Projects -->
+    <!-- Other Projects -->
     <div class="row row-fluid">
-      <h2>Open Projects</h2>
-        <%= render 'shared/projects' %>
+      <h2>Other Projects</h2>
+        <%= row_fill_user(rand, 5) %>
     </div>
 </div><!-- End Homepage -->
