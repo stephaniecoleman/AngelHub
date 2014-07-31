@@ -12,11 +12,17 @@
 		</div>
 		<%= header_links %>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			 <ul class="nav navbar-nav">
+		  <ul class="nav navbar-nav">
 			 	<li><a a data-toggle="modal" href="#about">About</a></li>
 			 	<%= request_link %>
 			 	<%= project_link %>
-			 </ul>
+				<li>
+				 	<%= form_tag(:controller => "projects", :action => "search", :method => "get", :class => "navbar-form navbar-left", :role => "search" ) do %>
+					  <%= text_field_tag :search %>
+					  <%= submit_tag "Search", :name => nil %>
+					<% end %>
+				</li>
+			</ul>
 		</div>
 	</div>
 </nav>

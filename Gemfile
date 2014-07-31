@@ -54,6 +54,10 @@ gem 'carrierwave'
 # explain please
 gem 'mini_magick'
 
+# simplifies complicated sql querries
+# https://github.com/camertron/arel-helpers
+gem 'arel-helpers'
+
 
 group :test, :development do
   gem 'rspec'

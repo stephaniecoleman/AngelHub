@@ -23,6 +23,10 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def search
+    @projects = Project.search(params[:search])
+  end
+
   private
 
     def project_params
