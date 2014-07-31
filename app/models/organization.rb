@@ -12,6 +12,6 @@ class Organization < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   scope :featured, lambda { |limit = 4|
-    shuffle.take(limit)
+    all.shuffle.take(limit)
   }
 end

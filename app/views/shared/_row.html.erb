@@ -5,7 +5,7 @@
       <img src="<%= fake_image %>"> <!-- will be project.project_pic -->
     </div> <!-- project-image -->
     <div class="proj.title">
-      <b><%= proj.title %></b>
+      <b><%= proj.try(:title) || proj.try(:name) %></b>
     </div> <!-- project-title -->
     <div class="project-description">
       <%= proj.description %>
