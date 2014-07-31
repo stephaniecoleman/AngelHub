@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   # organizations must give their projects uniqueness names
   validates :title, :uniqueness => { :scope => :organization_id }
   validates :status, :inclusion => POSSIBLE_STATUSES
-
+  
   mount_uploader :project_pic, ProjectPicUploader
 
   # scopes
@@ -25,7 +25,15 @@ class Project < ActiveRecord::Base
     order(:developer_count => :desc).limit(limit)
   }
 
-  #scope :recent, lambda
+  def progress(status_code=nil)
+    tap do |project|
+      if status_code
+        project.update(status: status_code)
+      else
+        project.increment(:status).save
+      end
+    end
+  end
 
   def create_repo(params)
     OCTOKIT_CLIENT.create_repository(
