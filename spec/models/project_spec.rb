@@ -29,6 +29,28 @@ RSpec.describe Project, :type => :model do
         expect(build(:project, :status => 'finished')).to be_valid
       end
     end
+  end
 
+  describe 'mixins' do
+    it "finds a project by tag" do
+      project = create(:project)
+      project.tags << create(:tag, name: "Health")
+
+      expect(Project.tagged_as_all('Health')).to include(project)
+    end
+
+    it "refines search for a project with mulitple tags" do
+      specific = create(:project)
+      general = create(:project)
+      health_tag = create(:tag, name: "Health")
+      sanitation_tag = create(:tag, name: "Sanitation")
+
+      specific.tags << health_tag
+      specific.tags << sanitation_tag
+      general.tags << health_tag
+
+      expect(Project.tagged_as_all('Health', 'Sanitation')).to include(specific)
+      expect(Project.tagged_as_all('Health', 'Sanitation')).to_not include(general)
+    end
   end
 end

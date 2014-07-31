@@ -1,12 +1,19 @@
 module Taggable
   extend ActiveSupport::Concern
 
+
   included do
+
     has_many :tagged_objects, :as => :taggable, :dependent => :destroy
     has_many :tags, :through => :tagged_objects
 
-    scope :tagged_as, lambda{ |*tags|
-      raise ArgumentError, 'no tags provided' if tags.empty?
+    scope :tagged_as_any, lambda{ |*tags|
+      joins(:tags).where(:tags => {:name => tags})
+                  .group("#{table_name}.id")
+    }
+
+    scope :tagged_as_all, lambda{ |*tags|
+      tagged_as_any(*tags).having('COUNT(tagged_objects.taggable_id) = ?', tags.count)
     }
   end
 
@@ -15,11 +22,12 @@ module Taggable
       if tag.is_a? Tag
         tag
       else
-        tag = tag.to_s
-        Tag.find_by_name(tag) || Tag.create(name: tag)
+        tag.to_s.split(',').map do |t|
+          Tag.find_by_name(t) || Tag.create(name: t)
+        end
       end
     end
-    self.tags << tags
+    self.tags << tags.flatten
   end
 
 end
