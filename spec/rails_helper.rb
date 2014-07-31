@@ -46,7 +46,7 @@ RSpec.configure do |config|
   OmniAuth.config.mock_auth[:github] = {
     :provider => 'github', 
     :uid => Faker::Number.number(10)
-
+    
   }
 
   # Enable FactoryGirl syntax in tests

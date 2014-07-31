@@ -51,8 +51,7 @@ gem 'omniauth-github'
 # https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave'
 
-
-# explain please ___________
+# explain please
 gem 'mini_magick'
 
 
@@ -90,6 +89,7 @@ group :test, :development do
   #     rake diagram:models:complete            # Generates an class diagram for all models
   # /doc/* is in .gitignore so your diagrams wont be commited
   gem 'railroady'
+  
 end
 
 

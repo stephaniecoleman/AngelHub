@@ -8,7 +8,11 @@ class Project < ActiveRecord::Base
   has_many :developers, :through => :developer_project
   
   validates_presence_of :title, :description, :status
+
+  # organizations must give their projects unique names
+  validates :title, :uniqueness => { :scope => :organization_id }
   validates :status, :inclusion => POSSIBLE_STATUSES
+
   mount_uploader :project_pic, ProjectPicUploader
 
   def create_repo(params)

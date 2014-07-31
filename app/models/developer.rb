@@ -14,12 +14,12 @@ class Developer < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(auth.slice(:uid, :provider)).first_or_create do |developer|
-      developer.handle_omni_assignment(auth)
+      developer.omni_assignment(auth)
     end
   end
 
 
-  def handle_omni_assignment auth
+  def omni_assignment auth
     attrs = {
       name: auth.info.name,
       image: auth.info.image,
@@ -40,7 +40,7 @@ class Developer < ActiveRecord::Base
         val.blank?
       end
     end
-    assign_attributes( attrs )
+    assign_attributes(attrs)
   end
 
 end
