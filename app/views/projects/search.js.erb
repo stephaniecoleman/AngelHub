@@ -1,6 +1,8 @@
-var $searchResults = $('#search-results');
+<% if @projects.any? %>
 
-$searchResults.html('<%= j render 'shared/search_results' %>');
+	var $searchResults = $('#search-results');
+	$searchResults.html('<%= j render 'shared/search_results' %>');
+	$searchResults.slideDown();
 
-$searchResults.slideDown();
+<% end %>
 
