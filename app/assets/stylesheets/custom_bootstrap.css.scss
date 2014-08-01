@@ -15,7 +15,7 @@ body {
 	display: none;
 }
 
-div.alert.alert-warning {
+div.alert.alert-warning, div.alert.alert-danger {
   background-color: #4cddf3;
 }
 
@@ -73,10 +73,14 @@ section h2 {
 }
 
 .project-about ul {
-    list-style: none; 
+    list-style: none;
     padding-left: 0;
 }
 
 .project-description{
     line-height: 1.30em;
+}
+
+div#search-results{
+  background-color: #4cddf3;
 }
