@@ -26,3 +26,7 @@
 //= require modernizr.custom
 //= require waypoints
 //= require_tree .
+
+$(function(){
+  var client = new Faye.client('http://localhost:9292/faye');
+})

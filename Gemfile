@@ -68,7 +68,6 @@ group :test, :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
-
   gem 'binding_of_caller'
 
    # A library for setting up Ruby/ActiveRecord objects as test data
@@ -93,10 +92,13 @@ group :test, :development do
   #     rake diagram:models:complete            # Generates an class diagram for all models
   # /doc/* is in .gitignore so your diagrams wont be commited
   gem 'railroady'
+
   # faye for messaging
   gem 'faye'
   # eventmachine for realtime
   gem 'eventmachine'
+  # thin webserver for Faye
+  gem 'thin'
 
 end
 
