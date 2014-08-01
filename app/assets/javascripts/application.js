@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require modernizr.custom
 //= require turbolinks
 //= require bootstrap
 //= require grid
@@ -22,9 +23,9 @@
 //= require jquery.countTo
 //= require jquery.fitvid
 //= require jquery.parallax
-//= require main
-//= require modernizr.custom
 //= require waypoints
+//= require faye
+//= require main
 //= require_tree .
 
 $(function(){
