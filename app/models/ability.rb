@@ -21,7 +21,7 @@ class Ability
     when Organization
         # organizations can view Developers, but cannot do any of the other crud
         # actions on them
-        cannot :manage, DeveloperProjects
+        cannot :manage, DeveloperProject
 
         cannot [:create, :update, :destroy], Developer
         can :read, Developer
@@ -39,6 +39,7 @@ class Ability
 
     # all users(devs and organizations) can see projects
     can :read, Project
+    can :search, Project
 
     # Define abilities for the passed in user here. For example:
     #

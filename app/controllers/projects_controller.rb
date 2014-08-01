@@ -24,7 +24,10 @@ class ProjectsController < ApplicationController
   end
 
   def search
-    # @projects = Project.search(params[:search])
+    @projects = Project.search(params[:search]).limit(4)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
