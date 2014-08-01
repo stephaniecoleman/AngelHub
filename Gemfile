@@ -54,11 +54,9 @@ gem 'mini_magick'
 gem 'arel-helpers'
 
 # faye for messaging
-gem 'faye'
+gem 'faye-rails'
 # eventmachine for realtime
 gem 'eventmachine'
-# thin webserver for Faye
-gem 'thin'
 
 #12 factor for assets in production
 gem 'rails_12factor', group: :production

@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require modernizr.custom
 //= require turbolinks
 //= require bootstrap
+//= require modernizr.custom
 //= require grid
 //= require html5shiv
 //= require jquery.backgroundvideo
@@ -23,8 +23,8 @@
 //= require jquery.countTo
 //= require jquery.fitvid
 //= require jquery.parallax
+//= require jquery.superslides
 //= require waypoints
-//= require faye
 //= require main
 //= require_tree .
 

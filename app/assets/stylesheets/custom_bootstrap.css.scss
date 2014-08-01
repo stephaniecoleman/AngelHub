@@ -9,3 +9,37 @@ body {
 div.alert.alert-warning {
   background-color: #4cddf3;
 }
+
+div.container {
+  position: relative;
+}
+
+div.homepage.row {
+  margin: 20px;
+}
+
+div.homepage.row>div {
+  min-height: 150px;
+}
+
+div.project {
+  min-height: 100px;
+}
+
+div.project-image {
+  height: 200px;
+  overflow: hidden;
+  background-size: cover;
+}
+
+div.project-image img{
+  width: 100%;
+}
+
+div.project-description {
+  min-height: 50px;
+}
+
+a.navbar-brand {
+  font-size: 2em;
+}

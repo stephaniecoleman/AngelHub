@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require superslides
  *= require animate
  *= require bootstrap-theme
  *= require bootstrap
@@ -23,37 +24,3 @@
  *= require zocial
  *= require_self
  */
-
-div.container {
-  position: relative;
-}
-
-div.homepage.row {
-  margin: 20px;
-}
-
-div.homepage.row>div {
-  min-height: 150px;
-}
-
-div.project {
-  min-height: 100px;
-}
-
-div.project-image {
-  height: 200px;
-  overflow: hidden;
-  background-size: cover;
-}
-
-div.project-image img{
-  width: 100%;
-}
-
-div.project-description {
-  min-height: 50px;
-}
-
-a.navbar-brand {
-  font-size: 2em;
-}
