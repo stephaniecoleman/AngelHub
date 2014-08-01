@@ -27,7 +27,3 @@
 //= require waypoints
 //= require main
 //= require_tree .
-
-$(function(){
-  var client = new Faye.client('http://localhost:9292/faye');
-})

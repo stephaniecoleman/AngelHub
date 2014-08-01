@@ -41,24 +41,11 @@ dp(document).ready(function() {
         "types": ["mp4", "ogg", "webm"]
     });
     //NIVO LIGHTBOX
-    dp('.popup').venobox();
-
-    var sudoSlider = dp("#slider").sudoSlider({
-        customLink: 'a.customLink',
-        prevNext: false
-    });
+    //deleted
 
     //TESTIMONIAL SLIDER
-    dp(".testimonial-slider").sudoSlider({
-        customLink: '.testimonial-item > a',
-        speed: 400,
-        responsive: true,
-        effect: "fadeOutIn",
-        useCSS: true,
-        continuous: true,
-        prevNext: false,
-        updateBefore: true
-    });
+    //deleted
+
     //ANIMATED OBJECT
     dp(".animatez").waypoint(function(direction) {
         var effect = dp(this).attr('data-effect');
@@ -87,7 +74,7 @@ dp(document).ready(function() {
     });
 
     //SMOOTH SCROLL
-    dp(".sscroll").smoothScroll();
+    //deleted
 
     //FITVIDS
     dp(".responsive-video").fitVids();
