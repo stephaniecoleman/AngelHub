@@ -11,7 +11,6 @@
  * file per style scope.
  *
  *= require_tree .
- *= require superslides
  *= require animate
  *= require bootstrap-theme
  *= require bootstrap
@@ -21,6 +20,5 @@
  *= require og-component
  *= require style-light
  *= require light-blue
- *= require zocial
  *= require_self
  */
