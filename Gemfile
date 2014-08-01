@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Octokit is a Ruby toolkit for the GitHub API 
+# Octokit is a Ruby toolkit for the GitHub API
 gem 'octokit', "~> 3.0"
 
 # user authentication
@@ -93,7 +93,11 @@ group :test, :development do
   #     rake diagram:models:complete            # Generates an class diagram for all models
   # /doc/* is in .gitignore so your diagrams wont be commited
   gem 'railroady'
-  
+  # faye for messaging
+  gem 'faye'
+  # eventmachine for realtime
+  gem 'eventmachine'
+
 end
 
 
