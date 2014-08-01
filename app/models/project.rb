@@ -1,11 +1,12 @@
 class Project < ActiveRecord::Base
-  # model/concerns/taggable.rb
+  # model/concerns/*.rb
   # has established relationships, scopes, and helper methods for 
-  # taggable models
+  # these polymorphic models
   include Taggable
+  include Categorizable
 
-
-  include ArelHelpers::ArelTable
+  include Searchable
+  search_by :title, :tag, :category
 
   # establish the only valid values for status
   POSSIBLE_STATUSES = %w[ requested in_progress finished ]
@@ -42,9 +43,6 @@ class Project < ActiveRecord::Base
     where(status: [:requested, :in_progress]).shuffle.take(limit)
   }
 
-  scope :search, lambda { |query, limit = 4|
-    
-  }
   # in_prog
   scope :in_prog, lambda { |limit = 4|
     in_progress.shuffle.take(limit)
