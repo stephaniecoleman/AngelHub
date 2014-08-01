@@ -7,7 +7,7 @@ FactoryGirl.define do
     email { Faker::Internet.email(name) }
     password Faker::Internet.password(8, 12)
     github_url { Faker::Internet.url('github.com/', name) }
-    image { "https://github.com/identicons/#{name}.png"}
+    image { "https://github.com/identicons/#{name.gsub(/\./, "").split(" ")[0]}.png"}
 
     factory :developer_with_projects do
 

@@ -1,12 +1,14 @@
 <% projects.each do |proj| %>
 <div class="col-xs-3">
   <div class="project">
+    <%= link_to project_path(proj) do %>
     <div class="project-image">
       <img src="<%= fake_image %>"> <!-- will be project.project_pic -->
     </div> <!-- project-image -->
-    <div class="proj.title">
+    <div class="project-title">
       <b><%= proj.try(:title) || proj.try(:name) %></b>
     </div> <!-- project-title -->
+    <% end %>
     <div class="project-description">
       <%= proj.description %>
     </div> <!-- project-description -->

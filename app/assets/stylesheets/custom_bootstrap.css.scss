@@ -82,5 +82,29 @@ section h2 {
 }
 
 div#search-results{
-  background-color: #4cddf3;
+  border: 10px solid #d4d4d4;
+}
+
+input#search {
+  border: 2px solid #4cddf3;
+}
+
+div.project-title, li.category a {
+  color: #4f4182;
+}
+
+div h2, div h3 {
+  color: #777;
+}
+
+div.project-description {
+  color: #333;
+}
+
+img.devpic, img.projshow {
+  width:100%;
+  overflow: hidden;
+}
+img.devpic {
+  margin:10px;
 }

@@ -14,9 +14,9 @@
               <h4 class="project-description"><%= @project.description %></h4>
             </div>
             <div class="col-xs-6">
-              <img src="<%= @project.project_pic.gallery %>"/>
+              <img class="projshow" src="<%= fake_image %>"/>
               <%= status_button(current_user, @project)%>
-            </div> 
+            </div>
           </div>
           <hr class="bs-docs-separator">
           <div class="row row-fluid">
@@ -39,11 +39,13 @@
               <section class="project-developers">
                 <h2>Developers on the Project</h2>
               </section>
-              <% @project.developers.each do |collab| %>
+              <% @project.developers.each do |dev| %>
+              <% if dev.image != "" %>
               <div class="col-xs-3">
-                <img src="<%= collab.image %>"/>
+                <img class="devpic" src="<%= dev.image %>"/>
               </div>
-              <% end%>
+              <% end %>
+              <% end %>
             </div>
           </div>
           <% end%>
