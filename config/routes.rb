@@ -23,9 +23,9 @@ Rails.application.routes.draw do
   end
 
   resources :developers
-  resources :projects 
-
-  resources :developer_projects, :only => :create
+  resources :projects do
+    resources :developer_projects, :only => :create
+  end
 
   resource :projects do
     post 'search' => 'projects#search'
