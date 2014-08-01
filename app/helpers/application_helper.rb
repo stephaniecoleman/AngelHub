@@ -48,15 +48,17 @@ module ApplicationHelper
   end
 
   def status_button(user, project)
+    html = ""
     if user.class == Organization && user.id == project.organization_id
-      render partial: 'shared/button_delete', locals: {project: project}
+      html << render('shared/button_delete', project: project)
       if project.status == "in_progress"
-        render partial: 'shared/button_complete', locals: {project: project}
+        html << render('shared/button_complete', project: project)
       end
-    elsif user.class == Developer #&& !project.developers.include(user) 
-      if project.status == "requested"
-        render partial: 'shared/button_apply', locals: {project: project}
+    elsif user.class == Developer && !project.developers.include?(user) 
+      if project.status != "finished"
+        html << render('shared/button_apply', project: project)
       end
      end 
+     html.html_safe
   end
 end

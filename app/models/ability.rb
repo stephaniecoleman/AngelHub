@@ -11,6 +11,7 @@ class Ability
         # actions on them
         cannot [:create, :update, :destroy], Organization
         can :read, Organization
+        can [:update_progress], Project
     when Organization
         # organizations can view Developers, but cannot do any of the other crud
         # actions on them

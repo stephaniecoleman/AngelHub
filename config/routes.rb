@@ -23,11 +23,9 @@ Rails.application.routes.draw do
   end
 
   resources :developers
-  resources :projects do
-    member do
-      post 'progress' => 'projects#update_progress'
-    end
-  end
+  resources :projects 
+
+  resources :developer_projects, :only => :create
 
   resource :projects do
     post 'search' => 'projects#search'
