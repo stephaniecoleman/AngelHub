@@ -39,6 +39,7 @@ class Ability
 
     # all users(devs and organizations) can see projects
     can :read, Project
+    can :search, Project
 
     # Define abilities for the passed in user here. For example:
     #

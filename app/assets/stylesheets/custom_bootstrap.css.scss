@@ -6,6 +6,15 @@ body {
   padding-top: 80px;
 }
 
+.close-search-results {
+	float: right;
+	margin-right: 20px;
+}
+
+#search-results {
+	display: none;
+}
+
 div.alert.alert-warning {
   background-color: #4cddf3;
 }
@@ -43,3 +52,4 @@ div.project-description {
 a.navbar-brand {
   font-size: 2em;
 }
+

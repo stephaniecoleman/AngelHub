@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :projects
 
   resource :projects do
-    get 'search' => 'projects#search'
+    post 'search' => 'projects#search'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
