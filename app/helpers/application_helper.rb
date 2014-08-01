@@ -46,4 +46,19 @@ module ApplicationHelper
     projects = current_user.projects.send(skope, *arg)
     render 'shared/row', projects: projects
   end
+
+  def status_button(user, project)
+    html = ""
+    if user.class == Organization && user.id == project.organization_id
+      html << render('shared/button_delete', project: project)
+      if project.status == "in_progress"
+        html << render('shared/button_complete', project: project)
+      end
+    elsif user.class == Developer && !project.developers.include?(user) 
+      if project.status != "finished"
+        html << render('shared/button_apply', project: project)
+      end
+     end 
+     html.html_safe
+  end
 end

@@ -19,8 +19,6 @@
 //= require html5shiv
 //= require jquery.backgroundvideo
 //= require jquery.backtotop
-//= require jquery.countdown
-//= require jquery.countTo
 //= require jquery.fitvid
 //= require jquery.parallax
 //= require waypoints

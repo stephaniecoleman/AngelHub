@@ -1,12 +1,13 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  
+
   factory :developer do
     name { Faker::Name.name }
     email { Faker::Internet.email(name) }
     password Faker::Internet.password(8, 12)
     github_url { Faker::Internet.url('github.com/', name) }
+    image { "https://github.com/identicons/#{name}.png"}
 
     factory :developer_with_projects do
 
@@ -22,5 +23,5 @@ FactoryGirl.define do
       end
     end
   end
-  
+
 end
