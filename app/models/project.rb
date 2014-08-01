@@ -13,8 +13,8 @@ class Project < ActiveRecord::Base
   enum :status => POSSIBLE_STATUSES
 
   belongs_to :organization
-  has_many :developer_project, :dependent => :destroy
-  has_many :developers, :through => :developer_project
+  has_many :developer_projects, :dependent => :destroy
+  has_many :developers, :through => :developer_projects
 
   validates_presence_of :title, :description, :status
 

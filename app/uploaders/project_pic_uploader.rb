@@ -33,7 +33,7 @@ class ProjectPicUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_limit => [300, 300]
+    process :resize_to_limit => [400, 400]
   end
 
   version :gallery do
