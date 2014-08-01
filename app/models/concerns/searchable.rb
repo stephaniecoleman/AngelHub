@@ -6,7 +6,7 @@ module Searchable
     include ArelHelpers::ArelTable
 
     # does a derived search on the ActiveRecord::Relation object
-    scope :search, lambda { |query, group_method = :union, search_using = nil|
+    scope :search, lambda { |queries, group_method = :union, search_using = nil|
       # default search params set by ::search_by
       search_using ||= searches_on
 
@@ -20,14 +20,25 @@ module Searchable
                        raise ArgumentError, "#{group_method} is not a valid group method. Choose either :union, :set or :intersect"
                      end
 
-      # gather queries
-      queries = search_using.map do |arg|
-        if respond_to?(scope_name = "#{arg}_search")
-          [scope_name, query]
-        else
-          [:where, "#{arg} ILIKE ?", "%#{query}%"]
-        end
-      end
+      queries = case queries
+                when Hash
+                  # handle different queries for each attribute
+                  queries.map do |(attribute, query)|
+                    if respond_to?(scope_name = "#{attribute}_search")
+                      [scope_name, query]
+                    else
+                      [:where, "#{attribute} ILIKE ?", "%#{query}%"]
+                    end
+                  end
+                when String
+                  search_using.map do |attribute|
+                    if respond_to?(scope_name = "#{attribute}_search")
+                      [scope_name, queries]
+                    else
+                      [:where, "#{attribute} ILIKE ?", "%#{queries}%"]
+                    end
+                  end
+                end
 
       queries.inject(nil) do |past_q, current_q|
         if past_q

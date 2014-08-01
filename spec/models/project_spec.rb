@@ -93,7 +93,7 @@ RSpec.describe Project, :type => :model do
         it "does not return duplicates when found projects meet multiple criterias" do
           project = create(:project, title: "programming")
           project.tags << create(:tag, name: "progressive")
-          project.categories << create(:category, name: "prorams")
+          project.categories << create(:category, name: "programs")
 
           search_results = Project.search('prog', :set)
 
