@@ -12,6 +12,10 @@ module Categorizable
     scope :categorized_as_all, lambda{ |*categories|
       categorized_as_any(*categories).having('COUNT(categorized_objects.categorizable_id) = ?', categories.count)
     } 
+
+    scope :category_search, ->(query) {
+      joins(:categories).where('categories.name ILIKE ?', "%#{query}%")
+    }
   end
 
 end
