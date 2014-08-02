@@ -29,7 +29,7 @@ class Ability
         can :read, Developer
         # organizations can edit, update, delete projects if they are the owners
         can :create, Project
-        can [:edit, :update, :destroy], Project, :organization_id => user.id
+        can [:edit, :update, :destroy, :progress_update], Project, :organization_id => user.id
         # Organizations can add tags to projects they create
         can :create, Tag
         can :create, TaggedObject do |tagged_object|
