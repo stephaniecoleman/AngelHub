@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :developers
   resources :projects do
+    post 'progress_update' => 'projects#progress_update', as: 'progress'
     resources :developer_projects, :only => :create
   end
 
