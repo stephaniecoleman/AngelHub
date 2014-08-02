@@ -1,8 +1,8 @@
 <div class="well" role="form">
-<%= form_for(:project, url: projects_path, :html => {:class => "form-horizontal"}) do |f| %>
+  <%= form_for(:project, url: projects_path, :html => {:class => "form-horizontal"}) do |f| %>
 
 <div class="control-group">
-	<%= f.label :title, 'Project Name' %>
+  <%= f.label :title, 'Project Name' %>
   <%= f.text_field :title, placeholder: "Keep it short and pithy, please!", :maxlength => 30, class: "form-control text_field" %>
  </div><br>
 
@@ -12,7 +12,7 @@
  </div>
 
  <div class="control-group">
-	<%= f.label :location, 'Project Location' %>
+  <%= f.label :location, 'Project Location' %>
   <%= f.text_field :location, :maxlength => 50, class: "form-control text_field" %>
  </div><br>
 
