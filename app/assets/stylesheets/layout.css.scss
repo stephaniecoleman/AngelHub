@@ -6,25 +6,25 @@ body {
   padding-top: 80px;
 }
 
-.close-search-results {
-	float: right;
-	margin-right: 20px;
+div#search-results {
+	display: none;
 }
 
-#search-results {
-	display: none;
+div.search.row {
+  margin: 10px;
 }
 
 div.alert.alert-warning, div.alert.alert-danger {
   background-color: #4cddf3;
 }
 
-
 div.homepage.row {
   margin: 20px;
 }
 
-div.homepage.row>div {
+
+
+div.homepage.row > div {
   min-height: 150px;
 }
 
@@ -35,11 +35,11 @@ div.project {
 div.project-image {
   height: 200px;
   overflow: hidden;
-  background-size: cover;
 }
 
-div.project-image img{
+div.project-image img {
   width: 100%;
+  overflow: hidden;
 }
 
 div.project-description {
@@ -78,7 +78,6 @@ section h2 {
     line-height: 1.30em;
 }
 
-
 div#search-results{
   border: 10px solid #d4d4d4;
 }
@@ -93,18 +92,6 @@ div.project-title, li.category a {
 
 div h2, div h3 {
   color: #777;
-}
-
-div.project-description {
-  color: #333;
-}
-
-img.devpic, img.projshow {
-  width:100%;
-  overflow: hidden;
-}
-img.devpic {
-  margin:10px;
 }
 
 .btn-custom {
