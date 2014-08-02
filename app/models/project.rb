@@ -67,6 +67,7 @@ class Project < ActiveRecord::Base
   #     progress(:requested)    # => status: :requested
   #     progress(:in_progress)  # => status: :in_progress
   #     progress(:finished)     # => status: :finished
+  
   def progress(status_code=nil)
     tap do |project|
       if status_code
