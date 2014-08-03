@@ -61,12 +61,16 @@ gem 'eventmachine'
 #12 factor for assets in production
 gem 'rails_12factor', group: :production
 
+# Moved out of test-dev so can play with seeding in deployment:
 # A library for setting up Ruby/ActiveRecord objects as test data
   # Read:
   #   https://github.com/thoughtbot/factory_girl
   #   http://rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
-  # Moved out of test-dev so can play with seeding in deployment
   gem 'factory_girl_rails'
+
+  # a library that generates random data
+  # https://github.com/stympy/faker
+  gem 'faker'
 
 group :test, :development do
   gem 'rspec'
@@ -79,9 +83,7 @@ group :test, :development do
   # gem 'spring'
   gem 'binding_of_caller'
 
-  # a library that generates random data
-  # https://github.com/stympy/faker
-  gem 'faker'
+
 
   # data visualization for our database
   # Read: https://github.com/preston/railroady
