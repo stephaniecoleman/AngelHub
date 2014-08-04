@@ -59,9 +59,10 @@ gem 'faye-rails'
 gem 'eventmachine'
 
 #12 factor for assets in production
-gem 'rails_12factor', group: :production
+gem 'rails_12factor'
 
 # Moved out of test-dev so can play with seeding in deployment:
+
 # A library for setting up Ruby/ActiveRecord objects as test data
   # Read:
   #   https://github.com/thoughtbot/factory_girl
