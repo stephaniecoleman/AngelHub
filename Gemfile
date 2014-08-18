@@ -54,6 +54,13 @@ gem 'carrierwave'
 # explain please
 gem 'mini_magick'
 
+# Use unicorn as the app server
+gem 'unicorn'
+
+# a library that generates random data
+# https://github.com/stympy/faker
+gem 'faker'
+
 
 group :test, :development do
   gem 'rspec'
@@ -67,15 +74,12 @@ group :test, :development do
 
   gem 'binding_of_caller'
 
-   # A library for setting up Ruby/ActiveRecord objects as test data
+  # A library for setting up Ruby/ActiveRecord objects as test data
   # Read:
   #   https://github.com/thoughtbot/factory_girl
   #   http://rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
   gem 'factory_girl_rails'
 
-  # a library that generates random data
-  # https://github.com/stympy/faker
-  gem 'faker'
 
   # data visualization for our database
   # Read: https://github.com/preston/railroady
@@ -89,9 +93,6 @@ group :test, :development do
   #     rake diagram:models:complete            # Generates an class diagram for all models
   # /doc/* is in .gitignore so your diagrams wont be commited
   gem 'railroady'
-  
-  # Use unicorn as the app server
-  gem 'unicorn'
 end
 
 
