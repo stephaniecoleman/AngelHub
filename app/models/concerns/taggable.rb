@@ -1,7 +1,6 @@
 module Taggable
   extend ActiveSupport::Concern
 
-
   included do
 
     has_many :tagged_objects, :as => :taggable, :dependent => :destroy
@@ -14,6 +13,10 @@ module Taggable
 
     scope :tagged_as_all, lambda{ |*tags|
       tagged_as_any(*tags).having('COUNT(tagged_objects.taggable_id) = ?', tags.count)
+    }
+
+    scope :tag_search, ->(query) {
+      joins(:tags).where('tags.name ILIKE ?', "%#{query}%")
     }
   end
 

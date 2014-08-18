@@ -1,20 +1,22 @@
 <div class="row row-fluid homepage">
-  <!-- Left Side Container -->
-  <div class="col-xs-12">
   <!-- Requested Projects Container -->
    <div class="row row-fluid">
      <h2>Requested Projects</h2>
-     <%= render 'shared/projects' %>
+     <%= row_fill_user(:recent) %>
     </div>
     <!-- In Progress Projects Container -->
     <div class="row row-fluid">
       <h2>In Progress Projects</h2>
-        <%= render 'shared/projects' %>
+        <%= row_fill_user(:in_prog) %>
     </div>
   <!-- Completed Projects -->
     <div class="row row-fluid">
       <h2>Completed Projects</h2>
-        <%= render 'shared/projects' %>
+        <%= row_fill_user(:success) %>
     </div>
-  </div><!-- End Left Container-->
-</div><!-- Ebd Homepage -->
+    <!-- Other Projects -->
+    <div class="row row-fluid">
+      <h2>Other Projects</h2>
+        <%= row_fill_p(:rand) %>
+    </div>
+</div><!-- End Dash -->

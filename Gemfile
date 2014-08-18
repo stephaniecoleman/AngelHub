@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
-
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -22,13 +20,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-
-# Octokit is a Ruby toolkit for the GitHub API 
+# Octokit is a Ruby toolkit for the GitHub API
 gem 'octokit', "~> 3.0"
-
 # user authentication
 gem 'devise'
-
 # organize application secrets and api keys.
 # Read more: https://github.com/laserlemon/figaro
 gem 'figaro'
@@ -61,6 +56,17 @@ gem 'unicorn'
 # https://github.com/stympy/faker
 gem 'faker'
 
+# simplifies complicated sql querries
+# https://github.com/camertron/arel-helpers
+gem 'arel-helpers'
+
+# faye for messaging
+gem 'faye-rails'
+# eventmachine for realtime
+gem 'eventmachine'
+
+#12 factor for assets in production
+gem 'rails_12factor', group: :production
 
 group :test, :development do
   gem 'rspec'
@@ -71,7 +77,6 @@ group :test, :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
-
   gem 'binding_of_caller'
 
   # A library for setting up Ruby/ActiveRecord objects as test data
@@ -94,7 +99,6 @@ group :test, :development do
   # /doc/* is in .gitignore so your diagrams wont be commited
   gem 'railroady'
 end
-
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

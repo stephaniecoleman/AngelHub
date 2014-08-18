@@ -31,13 +31,93 @@ RSpec.describe Project, :type => :model do
     end
   end
 
-  describe 'mixins' do
-    it "finds a project by tag" do
-      project = create(:project)
-      project.tags << create(:tag, name: "Health")
+  describe 'scopes' do
+    describe 'search' do
+      it "does a derived search on the ActiveRecord::Relation obj" do
+        desc = "first project desc"
+        first_project = create(:project, :title => "aspc", :description => desc)
+        second_project = create(:project, :title => "asp")
 
-      expect(Project.tagged_as_all('Health')).to include(project)
+        search = Project.where(:description => desc).search('asp')
+        expect(search).to include(first_project)
+        expect(search).to_not include(second_project)
+      end
+
+      describe "by default" do
+        it "does a search based on title" do
+          project = create(:project, :title => "ruby on rails")
+
+          expect(Project.search('ruby')).to include(project)
+        end
+
+        it "does a search based on tags" do
+          project = create(:project)
+          project.tags << create(:tag, :name => "quack")
+
+          expect(Project.search('quack')).to include(project)
+        end
+
+        it "treats commas as different tags" do
+          first_project = create(:project)
+          second_project = create(:project)
+
+          rb_tag = create(:tag, :name => "ruby")
+
+          first_project.tags << rb_tag
+          first_project.tags << create(:tag, :name => "rails")
+          second_project.tags << rb_tag
+
+          search_results = Project.search('ruby, rails')
+
+          expect(search_results).to include(first_project)
+          expect(search_results).to_not include(second_project)
+        end
+
+        it "does a search based on categories" do
+          project = create(:project)
+          project.categories << create(:category, name: "Programming")
+
+          expect(Project.search("Programming")).to include(project)
+        end
+
+        it "does a case insensitive search" do
+          first_project = create(:project, :title => "proGrammInG")
+          second_project = create(:project)
+          third_project = create(:project)
+          second_project.tags << create(:tag, :name => "PROGRAMMING")
+          third_project.categories << create(:category, :name => "programming")
+
+          expect(Project.search('programming')).to include(first_project, second_project, third_project)
+        end
+
+        it "does not return duplicates when found projects meet multiple criterias" do
+          project = create(:project, title: "programming")
+          project.tags << create(:tag, name: "progressive")
+          project.categories << create(:category, name: "programs")
+
+          search_results = Project.search('prog', :set)
+
+          expect(search_results.where(:id => project.id).count).to eq(1)
+        end
+
+
+      end
+
     end
+
+  end
+
+  describe 'mixins' do
+    it "finds a union of projects by tag" do
+      first_project = create(:project)
+      second_project = create(:project)
+
+      first_project.tags << create(:tag, :name => "Ruby")
+      second_project.tags << create(:tag, :name => "Random")
+
+      expect(Project.tagged_as_any('Ruby', 'Random')).to include(first_project, second_project)
+    end
+
 
     it "refines search for a project with mulitple tags" do
       specific = create(:project)

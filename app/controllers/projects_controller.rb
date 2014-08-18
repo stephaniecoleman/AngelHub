@@ -6,6 +6,10 @@ class ProjectsController < ApplicationController
     # @project loaded by #load_and_authorize_resource
   end
 
+  def index
+     @projects = Project.all
+  end
+
   def create
     @project = Project.new(project_params)
     current_user.projects << @project
@@ -15,12 +19,26 @@ class ProjectsController < ApplicationController
     redirect_to project_path(@project)
   end
 
-  def index
-     @projects = Project.all
+  def progress_update
+    @project = Project.find(params[:project_id])
+    @project.progress
+    redirect_to root_path
   end
 
   def show
     @project = Project.find(params[:id])
+  end
+
+  def search
+    @projects = Project.search(params[:search]).limit(4)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def destroy
+      @project.destroy
+      redirect_to root_path
   end
 
   private
