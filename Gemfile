@@ -56,6 +56,13 @@ gem 'unicorn'
 # https://github.com/stympy/faker
 gem 'faker'
 
+
+# A library for setting up Ruby/ActiveRecord objects as test data
+# Read:
+#   https://github.com/thoughtbot/factory_girl
+#   http://rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
+gem 'factory_girl_rails'
+
 # simplifies complicated sql querries
 # https://github.com/camertron/arel-helpers
 gem 'arel-helpers'
@@ -78,13 +85,6 @@ group :test, :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   gem 'binding_of_caller'
-
-  # A library for setting up Ruby/ActiveRecord objects as test data
-  # Read:
-  #   https://github.com/thoughtbot/factory_girl
-  #   http://rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
-  gem 'factory_girl_rails'
-
 
   # data visualization for our database
   # Read: https://github.com/preston/railroady

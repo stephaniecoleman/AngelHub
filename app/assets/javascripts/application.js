@@ -23,4 +23,5 @@
 //= require jquery.parallax
 //= require waypoints
 //= require main
+//= require search
 //= require_tree .
