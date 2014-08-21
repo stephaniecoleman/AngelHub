@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731031933) do
+ActiveRecord::Schema.define(version: 20140731193307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "categorized_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorized_objects", force: true do |t|
+    t.integer  "categorizable_id"
+    t.string   "categorizable_type"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categorized_objects", ["category_id"], name: "index_categorized_objects_on_category_id", using: :btree
 
   create_table "developer_projects", force: true do |t|
     t.integer  "developer_id"
@@ -82,6 +99,8 @@ ActiveRecord::Schema.define(version: 20140731031933) do
     t.integer  "organization_id"
     t.integer  "status",          default: 0
     t.string   "project_pic"
+    t.integer  "developer_count", default: 0
+    t.string   "location"
   end
 
   create_table "tagged_objects", force: true do |t|

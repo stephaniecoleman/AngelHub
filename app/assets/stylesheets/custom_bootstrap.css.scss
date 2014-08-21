@@ -5,3 +5,115 @@
 body {
   padding-top: 80px;
 }
+
+.close-search-results {
+	float: right;
+	margin-right: 20px;
+}
+
+#search-results {
+	display: none;
+}
+
+div.alert.alert-warning, div.alert.alert-danger {
+  background-color: #4cddf3;
+}
+
+div.container {
+  position: relative;
+}
+
+div.homepage.row {
+  margin: 20px;
+}
+
+div.homepage.row>div {
+  min-height: 150px;
+}
+
+div.project {
+  min-height: 100px;
+}
+
+div.project-image {
+  height: 200px;
+  overflow: hidden;
+  background-size: cover;
+}
+
+div.project-image img{
+  width: 100%;
+}
+
+div.project-description {
+  min-height: 50px;
+}
+
+a.navbar-brand {
+  font-size: 2em;
+}
+
+.bs-docs-separator {
+  margin: 30px 0 5px;
+}
+
+.project-title h1 {
+    color: #4f4182;
+    font-weight: 400;
+    margin-top: 0px;
+    padding-bottom: 10px;
+}
+
+.project-title h4 {
+    color: #4f4182;
+}
+
+section h2 {
+      color: #4f4182;
+}
+
+.project-about ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.project-description{
+    line-height: 1.30em;
+}
+
+div#search-results{
+  border: 10px solid #d4d4d4;
+}
+
+input#search {
+  border: 2px solid #4cddf3;
+}
+
+div.project-title, li.category a {
+  color: #4f4182;
+}
+
+div h2, div h3 {
+  color: #777;
+}
+
+div.project-description {
+  color: #333;
+}
+
+img.devpic, img.projshow {
+  width:100%;
+  overflow: hidden;
+}
+
+img.devpic {
+  margin:10px;
+}
+
+.btn-custom {
+  width: 50%;
+}
+
+.row.row-fluid.search{
+  padding: 0px 20px;
+}
