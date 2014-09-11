@@ -48,10 +48,13 @@
           <% if dev.image != "" %>
           <div class="col-xs-3">
             <img class="devpic" src="<%= dev.image %>"/><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= dev.name %>
-            &nbsp;&nbsp;<% if dev.projects.count > 0 %>
-            <i class="fa fa-star"></i>&nbsp;&nbsp;<%= dev.projects.success.count %>
-            <%end%>
+            <p class="devname">
+              <%= dev.name %>
+            </p>
+              <% if dev.projects.count > 0 %>
+<!--               <span class="small devproj"><i class="fa fa-star"> </i><%= dev.projects.success.count %></span> -->
+              <%end%>
+
           </div>
           <% end %>
           <% end %>

@@ -104,7 +104,13 @@ img.devpic, img.projshow {
 }
 
 img.devpic {
-  margin:10px;
+  margin: 10px;
+}
+
+p.devname {
+  margin: 0 10px;
+  max-height: 20px;
+  overflow: hidden;
 }
 
 .btn-custom {
