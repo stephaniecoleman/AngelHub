@@ -49,6 +49,20 @@ gem 'carrierwave'
 # explain please
 gem 'mini_magick'
 
+# Use unicorn as the app server
+gem 'unicorn'
+
+# a library that generates random data
+# https://github.com/stympy/faker
+gem 'faker'
+
+
+# A library for setting up Ruby/ActiveRecord objects as test data
+# Read:
+#   https://github.com/thoughtbot/factory_girl
+#   http://rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
+gem 'factory_girl_rails'
+
 # simplifies complicated sql querries
 # https://github.com/camertron/arel-helpers
 gem 'arel-helpers'
@@ -83,9 +97,6 @@ group :test, :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   gem 'binding_of_caller'
-
-
-
   # data visualization for our database
   # Read: https://github.com/preston/railroady
   # before use:
@@ -100,12 +111,8 @@ group :test, :development do
   gem 'railroady'
 end
 
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
